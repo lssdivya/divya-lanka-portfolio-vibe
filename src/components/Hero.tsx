@@ -1,5 +1,4 @@
 
-
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -60,18 +59,16 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
   ];
 
   return (
-    <section id="hero" ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden pb-32">
-      <div className="absolute inset-0 bg-black" />
-      
-      {/* Animated gradient overlay */}
+    <section id="hero" ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden pb-32 bg-gray-50">
+      {/* Animated gradient overlay - now more visible on light background */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20"
+        className="absolute inset-0 bg-gradient-to-br from-purple-200/30 via-transparent to-pink-200/30"
         animate={{
           background: [
-            'linear-gradient(45deg, rgba(147, 51, 234, 0.1), transparent, rgba(236, 72, 153, 0.1))',
-            'linear-gradient(135deg, rgba(236, 72, 153, 0.1), transparent, rgba(147, 51, 234, 0.1))',
-            'linear-gradient(225deg, rgba(147, 51, 234, 0.1), transparent, rgba(236, 72, 153, 0.1))',
-            'linear-gradient(315deg, rgba(236, 72, 153, 0.1), transparent, rgba(147, 51, 234, 0.1))',
+            'linear-gradient(45deg, rgba(147, 51, 234, 0.2), transparent, rgba(236, 72, 153, 0.2))',
+            'linear-gradient(135deg, rgba(236, 72, 153, 0.2), transparent, rgba(147, 51, 234, 0.2))',
+            'linear-gradient(225deg, rgba(147, 51, 234, 0.2), transparent, rgba(236, 72, 153, 0.2))',
+            'linear-gradient(315deg, rgba(236, 72, 153, 0.2), transparent, rgba(147, 51, 234, 0.2))',
           ]
         }}
         transition={{
@@ -115,7 +112,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 }
               }}
             >
-              <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
                 <motion.img
                   src="/lovable-uploads/55fc955c-5023-4d3d-ba13-8d30a1ef83c1.png"
                   alt="Sai Divya Lanka"
@@ -155,10 +152,10 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg sm:text-xl md:text-2xl text-purple-200 mb-8 max-w-4xl mx-auto leading-relaxed px-4"
+            className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed px-4"
           >
             <div className="flex items-center justify-center">
-              <span className="text-white">I am a </span>
+              <span className="text-gray-800">I am a </span>
               <div className="relative ml-2 flex items-center">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -172,7 +169,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                       damping: 20,
                       duration: 0.4
                     }}
-                    className="text-white font-semibold whitespace-nowrap bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                    className="text-gray-800 font-semibold whitespace-nowrap bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
                   >
                     {roles[currentRoleIndex]}
                   </motion.span>

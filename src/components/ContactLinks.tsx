@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, LucideIcon } from 'lucide-react';
 
 interface ContactLink {
-  icon: React.ComponentType<{ size?: number }>;
+  icon: LucideIcon;
   label: string;
   url: string;
   color: string;
