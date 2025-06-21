@@ -1,4 +1,5 @@
 
+
 import React, { useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -101,7 +102,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
               className="w-40 h-40 lg:w-48 lg:h-48 rounded-full bg-purple-800 flex items-center justify-center p-2"
             >
               <img 
-                src="/bitmoji.png" 
+                src="/lovable-uploads/4a1fa786-49a1-40b8-a511-5302052843a2.png" 
                 alt="Avatar" 
                 className="w-full h-full rounded-full object-cover" 
               />
@@ -207,3 +208,4 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
 };
 
 export default About;
+
