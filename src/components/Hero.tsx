@@ -42,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
   ];
 
   return (
-    <section id="hero" ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden pb-20">
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-pink-900/20 dark:from-purple-900/40 dark:via-blue-900/40 dark:to-pink-900/40" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-1 shadow-2xl">
               <div className="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center overflow-hidden">
                 <img
-                  src="/lovable-uploads/e82a3565-96c0-417b-b56c-59bb148b263b.png"
+                  src="https://sdk.bitmoji.com/render/panel/20024090-102917751263_2-s5-v1.png?transparent=1&palette=1"
                   alt="Sai Divya Lanka"
                   className="w-full h-full rounded-full object-cover object-center"
                 />
