@@ -35,16 +35,16 @@ const AnimatedBackground: React.FC = () => {
         this.pulsePhase = Math.random() * Math.PI * 2;
         this.pulseSpeed = Math.random() * 0.02 + 0.01;
         
-        // Much brighter, more visible colors for dark backgrounds
+        // Dark colors for white background visibility
         const colors = [
-          '#00FFFF', // Bright cyan
-          '#FF00FF', // Bright magenta
-          '#FFFF00', // Bright yellow
-          '#00FF00', // Bright green
-          '#FF6600', // Bright orange
-          '#FFFFFF', // Pure white
-          '#FF0080', // Hot pink
-          '#80FF00', // Lime green
+          '#8B5CF6', // Purple
+          '#EC4899', // Pink
+          '#3B82F6', // Blue
+          '#10B981', // Green
+          '#F59E0B', // Orange
+          '#EF4444', // Red
+          '#6366F1', // Indigo
+          '#8B5A2B', // Brown
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
@@ -68,9 +68,9 @@ const AnimatedBackground: React.FC = () => {
         
         ctx.save();
         
-        // Create intense glow effect
+        // Create subtle glow effect for white background
         ctx.shadowColor = this.color;
-        ctx.shadowBlur = 20;
+        ctx.shadowBlur = 10;
         ctx.globalAlpha = this.opacity;
         
         // Draw the main particle
@@ -79,10 +79,10 @@ const AnimatedBackground: React.FC = () => {
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
         
-        // Add extra glow ring
-        ctx.globalAlpha = this.opacity * 0.3;
+        // Add subtle glow ring
+        ctx.globalAlpha = this.opacity * 0.2;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.size * 1.5, 0, Math.PI * 2);
         ctx.fill();
         
         ctx.restore();
@@ -114,9 +114,9 @@ const AnimatedBackground: React.FC = () => {
         particle.draw();
       });
 
-      // Draw enhanced connections with bright colors
+      // Draw connections with darker colors for white background
       ctx.save();
-      ctx.lineWidth = 1.5;
+      ctx.lineWidth = 1;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -124,10 +124,10 @@ const AnimatedBackground: React.FC = () => {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 150) {
-            const opacity = (150 - distance) / 150 * 0.6;
+            const opacity = (150 - distance) / 150 * 0.3;
             ctx.globalAlpha = opacity;
             
-            // Create gradient line with bright colors
+            // Create gradient line with visible colors
             const gradient = ctx.createLinearGradient(
               particles[i].x, particles[i].y,
               particles[j].x, particles[j].y
@@ -136,8 +136,6 @@ const AnimatedBackground: React.FC = () => {
             gradient.addColorStop(1, particles[j].color);
             
             ctx.strokeStyle = gradient;
-            ctx.shadowColor = '#FFFFFF';
-            ctx.shadowBlur = 5;
             
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
