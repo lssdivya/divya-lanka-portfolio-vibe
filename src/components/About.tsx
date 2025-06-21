@@ -39,8 +39,11 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
     const section = sectionRef.current;
-    const spans = section.querySelectorAll('span');
+    const spans = section.querySelectorAll('span.letter');
     const totalLetters = spans.length;
+    
+    if (totalLetters === 0) return;
+    
     const scrollDistance = totalLetters * 3; // 3px per letter for smooth scrolling
 
     // Set initial state - all letters gray
@@ -56,7 +59,6 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
         pin: true,
         anticipatePin: 1,
         onUpdate: (self) => {
-          // Optional: add progress indicator
           console.log(`Progress: ${Math.round(self.progress * 100)}%`);
         }
       }
@@ -113,13 +115,15 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-40 h-40 lg:w-48 lg:h-48 rounded-full bg-purple-800 flex items-center justify-center p-2"
+                className="w-40 h-40 lg:w-48 lg:h-48 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-1 shadow-2xl shadow-purple-500/50"
               >
-                <img 
-                  src="/lovable-uploads/4a1fa786-49a1-40b8-a511-5302052843a2.png" 
-                  alt="Avatar" 
-                  className="w-full h-full rounded-full object-cover" 
-                />
+                <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/4a1fa786-49a1-40b8-a511-5302052843a2.png" 
+                    alt="Avatar" 
+                    className="w-full h-full rounded-full object-cover" 
+                  />
+                </div>
               </motion.div>
             </div>
 
