@@ -28,7 +28,7 @@ const Index = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* Background layers */}
+      {/* Background layers - lowest z-index */}
       <AnimatedBackground />
       <FloatingElements />
       <ScrollProgressBar />
@@ -36,8 +36,8 @@ const Index = () => {
       {/* Navigation - higher z-index */}
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
       
-      {/* Main content - highest z-index */}
-      <main className="relative z-30">
+      {/* Main content - highest z-index with transparent background to show animations */}
+      <main className="relative z-[30] bg-transparent">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
