@@ -83,11 +83,9 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
   }, []);
 
   return (
-    <section id="about" ref={ref} className="relative">
-      <div className="absolute inset-0 bg-black" />
-      
+    <section id="about" ref={ref} className="relative bg-black text-white">
       {/* Scroll-locked text section */}
-      <div ref={scrollSectionRef} className="min-h-screen flex items-center justify-center relative z-10">
+      <div ref={scrollSectionRef} className="min-h-screen flex items-center justify-center relative z-10 bg-black">
         <div className="max-w-6xl mx-auto px-6 lg:px-20">
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16">
             {/* Left Column */}
@@ -123,7 +121,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="bg-white dark:bg-black rounded-2xl p-8 shadow-lg relative overflow-hidden"
+                className="bg-gray-900 rounded-2xl p-8 shadow-lg relative overflow-hidden border border-gray-700"
               >
                 <div
                   className="text-xl md:text-2xl leading-relaxed"
@@ -145,7 +143,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
       </div>
 
       {/* Stats Section - appears after scroll-locked section */}
-      <div className="py-20 relative z-10">
+      <div className="py-20 relative z-10 bg-black">
         <div className="max-w-6xl mx-auto px-6 lg:px-20">
           <motion.div
             ref={statsRef}
@@ -163,7 +161,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05 }}
-                className="text-center bg-black backdrop-blur-sm rounded-2xl p-6 border border-purple-600 shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300"
+                className="text-center bg-gray-900 backdrop-blur-sm rounded-2xl p-6 border border-purple-600 shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300"
               >
                 <div className="text-3xl md:text-4xl font-bold text-pink-500 mb-2 flex items-center justify-center gap-2">
                   <AnimatedCounter end={stat.end} suffix={stat.suffix} isInView={statsInView} />
@@ -199,7 +197,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-black rounded-2xl p-6 border border-purple-600 text-center shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300"
+                  className="bg-gray-900 rounded-2xl p-6 border border-purple-600 text-center shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300"
                 >
                   <div className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award size={24} className="text-white" />
