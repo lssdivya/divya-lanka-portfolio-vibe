@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -15,32 +15,9 @@ const About: React.FC<AboutProps> = ({ setActiveSection }) => {
     },
   });
 
-  const textRef = useRef<HTMLParagraphElement>(null);
-
   const aboutText = "I'm a passionate Data Engineer and Full-Stack Developer who transforms raw data into powerful, scalable solutions that drive business impact. With 4+ years of experience building enterprise-grade data pipelines, modern web applications, and intelligent analytics platforms, I specialize in bridging the gap between complex data challenges and elegant user experiences. From architecting cloud-native ETL frameworks that process terabytes of data to developing responsive React applications serving hundreds of thousands of users, I thrive on turning ambitious ideas into production-ready solutions. My expertise spans the entire data lifecycle from ingestion and processing to visualization and deployment, always with a focus on performance, scalability, and innovation.";
 
-  useEffect(() => {
-    if (inView && textRef.current) {
-      const words = textRef.current.querySelectorAll('.word');
-      words.forEach((word, index) => {
-        setTimeout(() => {
-          word.classList.add('highlighted');
-        }, index * 100);
-      });
-    }
-  }, [inView]);
-
-  const renderAnimatedText = (text: string) => {
-    return text.split(' ').map((word, index) => (
-      <span
-        key={index}
-        className="word inline-block transition-all duration-300 opacity-50 hover:opacity-100"
-        style={{ transitionDelay: `${index * 50}ms` }}
-      >
-        {word}&nbsp;
-      </span>
-    ));
-  };
+  const words = aboutText.split(' ');
 
   return (
     <section id="about" ref={ref} className="py-20 relative overflow-hidden">
@@ -54,36 +31,71 @@ const About: React.FC<AboutProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               About Me
             </span>
           </h2>
         </motion.div>
 
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-xl border border-gray-200 dark:border-gray-700">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300"
+            >
+              {words.map((word, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0.3 }}
+                  animate={inView ? { opacity: 1 } : {}}
+                  transition={{
+                    duration: 0.1,
+                    delay: 0.5 + index * 0.05,
+                  }}
+                  className="highlight-word"
+                >
+                  {word}{' '}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-xl border border-purple-100 dark:border-purple-800/30">
-            <p
-              ref={textRef}
-              className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300"
+          {[
+            { number: '4+', label: 'Years Experience' },
+            { number: '15+', label: 'Projects Delivered' },
+            { number: '100K+', label: 'Users Served' },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="text-center bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200 dark:border-gray-700"
             >
-              {renderAnimatedText(aboutText)}
-            </p>
-          </div>
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </motion.div>
       </div>
 
-      <style jsx>{`
-        .word.highlighted {
-          opacity: 1;
-          color: rgb(147 51 234);
+      <style>{`
+        .highlight-word {
+          transition: all 0.3s ease;
         }
-        .dark .word.highlighted {
-          color: rgb(196 181 253);
+        .highlight-word:hover {
+          color: #8b5cf6;
+          text-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
         }
       `}</style>
     </section>
