@@ -34,8 +34,10 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-xl border border-purple-500/30 shadow-xl">
         <div className="flex justify-between items-start">
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-white mb-2">
-              {experience.title}
+            <h3 className="text-xl font-bold mb-2">
+              <span className="bg-gradient-to-r from-purple-500 via-blue-600 to-purple-700 bg-clip-text text-transparent">
+                {experience.title}
+              </span>
             </h3>
             <div className="text-lg font-semibold text-purple-300 mb-2">
               {experience.company}
