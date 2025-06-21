@@ -28,13 +28,16 @@ const Index = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
+      {/* Background layers */}
       <AnimatedBackground />
       <FloatingElements />
       <ScrollProgressBar />
       
+      {/* Navigation - higher z-index */}
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
       
-      <main className="relative z-10">
+      {/* Main content - highest z-index */}
+      <main className="relative z-30">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

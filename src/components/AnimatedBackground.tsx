@@ -13,7 +13,7 @@ const AnimatedBackground: React.FC = () => {
     if (!ctx) return;
 
     const particles: Particle[] = [];
-    const particleCount = 100;
+    const particleCount = 150;
 
     class Particle {
       x: number;
@@ -28,10 +28,10 @@ const AnimatedBackground: React.FC = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
-        this.size = Math.random() * 3 + 1;
-        this.opacity = Math.random() * 0.8 + 0.2;
+        this.vx = (Math.random() - 0.5) * 1.2;
+        this.vy = (Math.random() - 0.5) * 1.2;
+        this.size = Math.random() * 4 + 2;
+        this.opacity = Math.random() * 0.8 + 0.4;
         this.pulseSpeed = Math.random() * 0.02 + 0.01;
         
         const colors = ['#8B5CF6', '#EC4899', '#F472B6', '#A855F7', '#C084FC'];
@@ -56,7 +56,7 @@ const AnimatedBackground: React.FC = () => {
         
         const gradient = ctx.createRadialGradient(
           this.x, this.y, 0,
-          this.x, this.y, this.size * 3
+          this.x, this.y, this.size * 4
         );
         
         gradient.addColorStop(0, this.color);
@@ -94,8 +94,8 @@ const AnimatedBackground: React.FC = () => {
 
       // Draw connections
       ctx.save();
-      ctx.globalAlpha = 0.2;
-      ctx.lineWidth = 1;
+      ctx.globalAlpha = 0.4;
+      ctx.lineWidth = 1.5;
 
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -103,7 +103,7 @@ const AnimatedBackground: React.FC = () => {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 120) {
+          if (distance < 150) {
             const gradient = ctx.createLinearGradient(
               particles[i].x, particles[i].y,
               particles[j].x, particles[j].y
@@ -113,7 +113,7 @@ const AnimatedBackground: React.FC = () => {
             gradient.addColorStop(1, '#EC4899');
             
             ctx.strokeStyle = gradient;
-            ctx.globalAlpha = (120 - distance) / 120 * 0.3;
+            ctx.globalAlpha = (150 - distance) / 150 * 0.5;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -149,52 +149,78 @@ const AnimatedBackground: React.FC = () => {
     <>
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{ opacity: 0.6 }}
+        className="fixed inset-0 pointer-events-none z-10"
+        style={{ opacity: 1 }}
       />
-      {/* Floating geometric shapes */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        {[...Array(8)].map((_, i) => (
+      {/* Enhanced floating geometric shapes */}
+      <div className="fixed inset-0 pointer-events-none z-5">
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-20 h-20 border-2 border-purple-500/20 rounded-full"
+            className="absolute w-20 h-20 border-2 border-purple-500/40 rounded-full"
             style={{
-              left: `${10 + (i * 12)}%`,
-              top: `${20 + (i * 8)}%`,
+              left: `${10 + (i * 8)}%`,
+              top: `${20 + (i * 6)}%`,
             }}
             animate={{
-              y: [0, -30, 0],
+              y: [0, -40, 0],
               rotate: [0, 360],
-              scale: [1, 1.2, 1],
+              scale: [1, 1.3, 1],
+              opacity: [0.3, 0.8, 0.3],
             }}
             transition={{
-              duration: 8 + i * 2,
+              duration: 10 + i * 2,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: i * 0.5,
+              delay: i * 0.8,
             }}
           />
         ))}
         
-        {[...Array(6)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={`square-${i}`}
-            className="absolute w-12 h-12 border border-pink-500/30"
+            className="absolute w-16 h-16 border-2 border-pink-500/40"
             style={{
-              right: `${5 + (i * 15)}%`,
-              top: `${30 + (i * 10)}%`,
+              right: `${5 + (i * 12)}%`,
+              top: `${30 + (i * 8)}%`,
               transform: 'rotate(45deg)',
             }}
             animate={{
-              x: [0, 20, 0],
+              x: [0, 30, 0],
               rotate: [45, 405],
-              opacity: [0.3, 0.8, 0.3],
+              opacity: [0.4, 0.9, 0.4],
+              scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 10 + i * 1.5,
+              duration: 12 + i * 1.5,
               repeat: Infinity,
               ease: "linear",
-              delay: i * 1,
+              delay: i * 1.2,
+            }}
+          />
+        ))}
+
+        {/* Animated gradient waves */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={`wave-${i}`}
+            className="absolute w-40 h-40 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-xl"
+            style={{
+              left: `${Math.random() * 80}%`,
+              top: `${Math.random() * 80}%`,
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50, 0],
+              y: [0, Math.random() * 100 - 50, 0],
+              scale: [1, 1.5, 1],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{
+              duration: 15 + i * 3,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 2,
             }}
           />
         ))}
