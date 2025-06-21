@@ -23,7 +23,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-black via-purple-900 to-purple-800 border-t border-pink-500 py-12">
+    <footer className="bg-black border-t border-purple-600 py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center space-y-8">
           <motion.div
@@ -32,10 +32,10 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
+            <h3 className="text-2xl font-bold bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent mb-4">
               Sai Divya Lanka
             </h3>
-            <p className="text-gray-300 max-w-md">
+            <p className="text-purple-200 max-w-md">
               Transforming data into insights, building scalable solutions, and bridging the gap between technology and innovation.
             </p>
           </motion.div>
@@ -54,7 +54,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-500 rounded-full flex items-center justify-center text-white shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-md hover:shadow-lg hover:shadow-pink-500/40 transition-shadow duration-300"
               >
                 <social.icon size={18} />
               </motion.a>
@@ -65,12 +65,12 @@ const Footer = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="border-t border-pink-500 pt-8 text-center"
+            className="border-t border-purple-600 pt-8 text-center"
           >
-            <p className="text-gray-300 text-sm flex items-center justify-center gap-2">
+            <p className="text-purple-200 text-sm flex items-center justify-center gap-2">
               Made with <Heart size={16} className="text-pink-500" /> by Sai Divya Lanka
             </p>
-            <p className="text-gray-300 text-xs mt-2">
+            <p className="text-purple-200 text-xs mt-2">
               © 2024 All rights reserved.
             </p>
           </motion.div>

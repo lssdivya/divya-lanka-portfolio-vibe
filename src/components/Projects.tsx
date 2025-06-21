@@ -48,7 +48,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
 
   return (
     <section id="projects" ref={ref} className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900 to-purple-800" />
+      <div className="absolute inset-0 bg-black" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -58,7 +58,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent">
               Featured Projects
             </span>
           </h2>
@@ -72,7 +72,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ y: -10 }}
-              className="group bg-gradient-to-br from-purple-900 to-pink-900 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-pink-500 hover:shadow-2xl transition-all duration-300"
+              className="group bg-black backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-pink-500/20 border border-purple-600 hover:shadow-2xl transition-all duration-300"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -80,19 +80,19 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                   alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#5B21B6]/30 to-[#DB2777]/30 group-hover:opacity-50 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-pink-500/30 group-hover:opacity-50 transition-opacity duration-300" />
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-pink-500 mb-3">
                   {project.title}
                 </h3>
                 
-                <p className="text-[#94A3B8] mb-3 line-clamp-3">
+                <p className="text-purple-200 mb-3 line-clamp-3">
                   {project.description}
                 </p>
                 
-                <p className="text-sm font-semibold text-[#06B6D4] mb-4">
+                <p className="text-sm font-semibold text-pink-500 mb-4">
                   {project.details}
                 </p>
                 
@@ -100,7 +100,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 bg-[#06B6D4] text-white text-xs rounded-md font-medium"
+                      className="px-2 py-1 bg-purple-600 text-white text-xs rounded-md font-medium"
                     >
                       {tech}
                     </span>
@@ -114,7 +114,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#06B6D4] text-white rounded-lg font-semibold text-sm hover:shadow-lg transition-shadow duration-200"
+                    className="flex items-center gap-2 px-4 py-2 bg-pink-500 text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-pink-500/40 transition-shadow duration-200"
                   >
                     <Github size={16} />
                     GitHub
@@ -126,7 +126,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 border-2 border-[#06B6D4] text-[#06B6D4] rounded-lg font-semibold text-sm hover:bg-[#06B6D4] hover:text-white transition-colors duration-200"
+                    className="flex items-center gap-2 px-4 py-2 border-2 border-pink-500 text-pink-500 rounded-lg font-semibold text-sm hover:bg-pink-500 hover:text-white transition-colors duration-200"
                   >
                     <ExternalLink size={16} />
                     Demo

@@ -59,25 +59,25 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
       icon: Github,
       label: 'GitHub',
       url: 'https://github.com/lssdivya',
-      color: 'from-[#5B21B6] to-[#DB2777]',
+      color: 'from-purple-600 to-pink-500',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
       url: 'https://www.linkedin.com/in/divyaa-l',
-      color: 'from-[#5B21B6] to-[#DB2777]',
+      color: 'from-purple-600 to-pink-500',
     },
     {
       icon: Mail,
       label: 'Email',
       url: 'mailto:Lss.divya27@gmail.com',
-      color: 'from-[#5B21B6] to-[#DB2777]',
+      color: 'from-purple-600 to-pink-500',
     },
   ];
 
   return (
     <section id="contact" ref={ref} className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900 to-purple-800" />
+      <div className="absolute inset-0 bg-black" />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -87,7 +87,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent">
               Let's Connect
             </span>
           </h2>
@@ -98,15 +98,15 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-gradient-to-br from-purple-900 to-pink-900 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-pink-500"
+            className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-pink-500/20 border border-purple-600"
           >
-            <h3 className="text-2xl font-bold mb-6 text-white">
+            <h3 className="text-2xl font-bold mb-6 text-pink-500">
               Send me a message
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-[#94A3B8] mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-purple-200 mb-2">
                   Name
                 </label>
                 <input
@@ -116,13 +116,13 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-[#06B6D4] bg-white/10 text-white focus:ring-2 focus:ring-[#06B6D4] focus:border-transparent transition-colors duration-200 placeholder-[#94A3B8]"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-purple-600 bg-black text-white focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-colors duration-200 placeholder-purple-300"
                   placeholder="Your name"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#94A3B8] mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-purple-200 mb-2">
                   Email
                 </label>
                 <input
@@ -132,13 +132,13 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border-2 border-[#06B6D4] bg-white/10 text-white focus:ring-2 focus:ring-[#06B6D4] focus:border-transparent transition-colors duration-200 placeholder-[#94A3B8]"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-purple-600 bg-black text-white focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-colors duration-200 placeholder-purple-300"
                   placeholder="your.email@example.com"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-[#94A3B8] mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-purple-200 mb-2">
                   Message
                 </label>
                 <textarea
@@ -148,7 +148,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 rounded-lg border-2 border-[#06B6D4] bg-white/10 text-white focus:ring-2 focus:ring-[#06B6D4] focus:border-transparent transition-colors duration-200 resize-none placeholder-[#94A3B8]"
+                  className="w-full px-4 py-3 rounded-lg border-2 border-purple-600 bg-black text-white focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-colors duration-200 resize-none placeholder-purple-300"
                   placeholder="Tell me about your project or just say hello!"
                 />
               </div>
@@ -158,7 +158,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg-[#06B6D4] text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-shadow duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-pink-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-pink-500/40 transition-shadow duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <motion.div
@@ -206,8 +206,8 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-8"
           >
-            <div className="bg-gradient-to-br from-purple-900 to-pink-900 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-pink-500">
-              <h3 className="text-2xl font-bold mb-6 text-white">
+            <div className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-pink-500/20 border border-purple-600">
+              <h3 className="text-2xl font-bold mb-6 text-pink-500">
                 Connect with me
               </h3>
               
@@ -222,7 +222,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
                     animate={inView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     whileHover={{ scale: 1.05, x: 10 }}
-                    className="flex items-center gap-4 p-4 rounded-lg bg-[#06B6D4] text-white shadow-md hover:shadow-lg transition-all duration-200"
+                    className="flex items-center gap-4 p-4 rounded-lg bg-pink-500 text-white shadow-md hover:shadow-lg hover:shadow-pink-500/40 transition-all duration-200"
                   >
                     <link.icon size={24} />
                     <span className="font-semibold">{link.label}</span>

@@ -55,7 +55,7 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
         { name: 'CSS3', icon: FaCss3Alt }
       ],
       headerIcon: FaReact,
-      skillColor: 'bg-blue-500',
+      skillColor: 'bg-pink-500',
     },
     {
       title: 'Backend',
@@ -67,7 +67,7 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
         { name: 'Shell Scripting', icon: FaTerminal }
       ],
       headerIcon: FaPython,
-      skillColor: 'bg-green-500',
+      skillColor: 'bg-purple-500',
     },
     {
       title: 'Data Engineering & Databases',
@@ -80,7 +80,7 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
         { name: 'MongoDB', icon: SiMongodb }
       ],
       headerIcon: FaDatabase,
-      skillColor: 'bg-purple-500',
+      skillColor: 'bg-pink-600',
     },
     {
       title: 'Cloud & DevOps',
@@ -93,7 +93,7 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
         { name: 'Git', icon: FaGitAlt }
       ],
       headerIcon: FaAws,
-      skillColor: 'bg-orange-500',
+      skillColor: 'bg-purple-600',
     },
     {
       title: 'Data Science & ML',
@@ -111,7 +111,7 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
 
   return (
     <section id="skills" ref={ref} className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900 to-purple-800" />
+      <div className="absolute inset-0 bg-black" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -121,7 +121,7 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent">
               Skills & Technologies
             </span>
           </h2>
@@ -135,13 +135,13 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: groupIndex * 0.1 }}
               whileHover={{ y: -5 }}
-              className="bg-black backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-500 hover:shadow-2xl transition-all duration-300"
+              className="bg-black backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-pink-500/20 border border-purple-600 hover:shadow-2xl transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-500 rounded-lg flex items-center justify-center mb-4">
                 <group.headerIcon className="w-6 h-6 text-white" />
               </div>
               
-              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h3 className="text-xl font-bold mb-4 bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent">
                 {group.title}
               </h3>
               

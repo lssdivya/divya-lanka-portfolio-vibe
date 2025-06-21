@@ -21,7 +21,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-black transition-colors duration-300">
       <ParticleBackground darkMode={true} />
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
       

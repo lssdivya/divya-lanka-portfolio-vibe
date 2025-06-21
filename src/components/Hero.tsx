@@ -60,7 +60,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
 
   return (
     <section id="hero" ref={ref} className="min-h-screen flex items-center justify-center relative overflow-hidden pb-32">
-      <div className="absolute inset-0 bg-gradient-to-br from-black to-purple-900" />
+      <div className="absolute inset-0 bg-black" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="text-center">
@@ -70,8 +70,8 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="mb-8"
           >
-            <div className="relative mt-16 w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 p-1 shadow-2xl transform translate-y-8">
-              <div className="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center overflow-hidden">
+            <div className="relative mt-16 w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-600 to-pink-500 p-1 shadow-2xl shadow-pink-500/40 transform translate-y-8">
+              <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
                 <img
                   src="/lovable-uploads/55fc955c-5023-4d3d-ba13-8d30a1ef83c1.png"
                   alt="Sai Divya Lanka"
@@ -87,7 +87,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
           >
-            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent">
               Sai Divya Lanka
             </span>
           </motion.h1>
@@ -96,9 +96,9 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed px-4"
+            className="text-lg sm:text-xl md:text-2xl text-purple-200 mb-8 max-w-4xl mx-auto leading-relaxed px-4"
           >
-            <span className="text-gray-300">I am a </span>
+            <span className="text-purple-200">I am a </span>
             <AnimatePresence mode="wait">
               <motion.span
                 key={currentRoleIndex}
@@ -106,7 +106,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="text-pink-400 font-semibold"
+                className="text-pink-500 font-semibold"
               >
                 {roles[currentRoleIndex]}
               </motion.span>
@@ -130,7 +130,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 transition={{ delay: 0.8 + index * 0.1 }}
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-pink-500/40 transition-shadow duration-300"
               >
                 <social.icon size={20} />
               </motion.a>
@@ -144,7 +144,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             onClick={scrollToAbout}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-purple-600 to-pink-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 mb-16"
+            className="bg-pink-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-pink-500/40 transition-all duration-300 mb-16"
           >
             See My Work
           </motion.button>
@@ -154,7 +154,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             transition={{ repeat: Infinity, duration: 2 }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           >
-            <ChevronDown size={32} className="text-gray-400" />
+            <ChevronDown size={32} className="text-purple-400" />
           </motion.div>
         </div>
       </div>

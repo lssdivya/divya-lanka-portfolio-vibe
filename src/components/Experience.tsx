@@ -135,7 +135,7 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
 
   return (
     <section id="experience" ref={ref} className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900 to-purple-800" />
+      <div className="absolute inset-0 bg-black" />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -145,14 +145,14 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent">
               Work Experience
             </span>
           </h2>
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500 hidden md:block" />
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 to-pink-500 hidden md:block" />
           
           <div className="space-y-8">
             {experiences.map((exp, index) => (
@@ -163,22 +163,22 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className={`relative ${index % 2 === 0 ? 'md:ml-20' : 'md:ml-20 md:pl-8'}`}
               >
-                <div className="absolute -left-12 top-6 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full hidden md:block" />
+                <div className="absolute -left-12 top-6 w-4 h-4 bg-gradient-to-br from-purple-600 to-pink-500 rounded-full hidden md:block" />
                 
                 <motion.div
                   whileHover={{ y: -5 }}
-                  className="bg-black backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-500 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                  className="bg-black backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-pink-500/20 border border-purple-600 hover:shadow-2xl transition-all duration-300 cursor-pointer"
                   onClick={() => toggleCard(index)}
                 >
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
+                      <h3 className="text-xl font-bold bg-gradient-to-br from-purple-600 to-pink-500 bg-clip-text text-transparent mb-2">
                         {exp.title}
                       </h3>
-                      <div className="text-lg font-semibold text-purple-300 mb-2">
+                      <div className="text-lg font-semibold text-pink-500 mb-2">
                         {exp.company}
                       </div>
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-300">
+                      <div className="flex flex-wrap gap-4 text-sm text-purple-200">
                         <div className="flex items-center gap-1">
                           <Calendar size={14} />
                           {exp.period}
@@ -192,16 +192,16 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
                     <motion.div
                       animate={{ rotate: expandedCard === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="text-purple-400"
+                      className="text-pink-500"
                     >
                       {expandedCard === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                     </motion.div>
                   </div>
                   
-                  <ul className="space-y-2 text-gray-300">
+                  <ul className="space-y-2 text-purple-200">
                     {exp.description.map((point, pointIndex) => (
                       <li key={pointIndex} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0" />
+                        <div className="w-1.5 h-1.5 bg-pink-500 rounded-full mt-2 flex-shrink-0" />
                         {point}
                       </li>
                     ))}
@@ -216,16 +216,16 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <ul className="space-y-2 mt-4 pt-4 border-t border-purple-500">
+                        <ul className="space-y-2 mt-4 pt-4 border-t border-purple-600">
                           {exp.details.map((detail, detailIndex) => (
                             <motion.li
                               key={detailIndex}
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: detailIndex * 0.1 }}
-                              className="flex items-start gap-2 text-gray-300"
+                              className="flex items-start gap-2 text-purple-200"
                             >
-                              <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0" />
+                              <div className="w-1.5 h-1.5 bg-pink-500 rounded-full mt-2 flex-shrink-0" />
                               {detail}
                             </motion.li>
                           ))}
