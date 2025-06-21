@@ -31,9 +31,7 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
   console.log('Rendering Experience section');
 
   return (
-    <section id="experience" ref={ref} className="py-20 relative overflow-hidden min-h-screen">
-      <div className="absolute inset-0 bg-black" />
-      
+    <section id="experience" ref={ref} className="py-20 relative overflow-hidden min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
