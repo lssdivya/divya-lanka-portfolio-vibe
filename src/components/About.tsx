@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -13,19 +12,6 @@ interface AboutProps {
   setActiveSection: (section: string) => void;
   darkMode?: boolean;
 }
-
-// Simple ProgressBar component
-const ProgressBar: React.FC<{ color: string; value: number }> = ({ color, value }) => (
-  <div className="bg-gray-200 h-2 rounded-full overflow-hidden">
-    <div 
-      className="h-full transition-all duration-1000 ease-out rounded-full"
-      style={{ 
-        width: `${value}%`, 
-        backgroundColor: color 
-      }}
-    />
-  </div>
-);
 
 const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => {
   const [ref, inView] = useInView({
@@ -68,13 +54,13 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           spans.forEach((span, index) => {
             if (index <= currentIndex) {
               gsap.to(span, {
-                color: '#8B5CF6',
+                color: '#D8B4FE',
                 duration: 0.5,
                 ease: "power2.out"
               });
             } else {
               gsap.to(span, {
-                color: '#6B7280',
+                color: '#94A3B8',
                 duration: 0.5,
                 ease: "power2.out"
               });
@@ -109,57 +95,34 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
         </motion.div>
 
         <div className="pt-12">
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16" ref={containerRef}>
-            {/* Left Column - Avatar */}
+          <div className="max-w-4xl mx-auto" ref={containerRef}>
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex-shrink-0"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              whileHover={{ scale: 1.02 }}
+              className="bg-black backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg shadow-pink-500/20 border border-purple-600 min-h-[60vh] flex items-center hover:shadow-pink-500/40 transition-all duration-300"
             >
-              <div className="w-48 h-48 rounded-full bg-purple-800 flex items-center justify-center p-4">
-                <img src="/bitmoji.png" className="w-full h-full rounded-full object-cover" alt="Avatar" />
-              </div>
-            </motion.div>
-
-            {/* Right Column - Content Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-white rounded-2xl p-8 shadow-lg flex-1 relative overflow-hidden"
-            >
-              <h3 className="text-5xl font-bold text-purple-600 mb-6">About Me</h3>
-              
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-gray-700 leading-relaxed text-lg"
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-lg md:text-xl leading-relaxed"
                 ref={textRef}
               >
                 {words.map((word, index) => (
                   <span
                     key={index}
-                    className="inline-block mr-2 transition-colors duration-500"
-                    style={{ color: '#6B7280' }}
+                    className="inline-block mr-2 transition-colors duration-500 text-slate-400"
                   >
                     {word}
                   </span>
                 ))}
               </motion.div>
-
-              {/* Progress Bars */}
-              <div className="space-y-4 mt-6">
-                <ProgressBar color="#FBBF24" value={80} />
-                <ProgressBar color="#EF4444" value={65} />
-                <ProgressBar color="#8B5CF6" value={70} />
-              </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Stats Section */}
         <motion.div
           ref={statsRef}
           initial={{ opacity: 0, y: 30 }}
@@ -191,7 +154,6 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           ))}
         </motion.div>
 
-        {/* Key Achievements */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
