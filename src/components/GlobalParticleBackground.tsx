@@ -2,13 +2,14 @@
 import React, { useCallback } from 'react';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
+import type { Engine, ISourceOptions, RecursivePartial } from 'tsparticles-engine';
 
 const GlobalParticleBackground: React.FC = () => {
-  const particlesInit = useCallback(async (engine: any) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
-  const options = {
+  const options: RecursivePartial<ISourceOptions> = {
     background: {
       color: {
         value: 'transparent',
@@ -49,10 +50,10 @@ const GlobalParticleBackground: React.FC = () => {
         width: 1,
       },
       move: {
-        direction: 'none' as const,
+        direction: 'none',
         enable: true,
         outModes: {
-          default: 'bounce',
+          default: 'bounce' as const,
         },
         random: false,
         speed: 1,
