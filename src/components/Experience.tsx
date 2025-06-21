@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -138,9 +137,10 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
     setExpandedCard(expandedCard === index ? null : index);
   };
 
+  console.log('Rendering Experience section');
+
   return (
     <section id="experience" ref={ref} className="py-20 relative overflow-hidden min-h-screen">
-      {console.log('Rendering Experience section')}
       <div className="absolute inset-0 bg-black" />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
