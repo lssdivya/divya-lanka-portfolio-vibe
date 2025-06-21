@@ -24,7 +24,12 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
       company: 'University of North Carolina at Charlotte',
       period: 'Feb 2024 – Dec 2024',
       location: 'Charlotte, NC',
-      description: 'Led comprehensive data engineering and full-stack development initiatives for university systems, focusing on scalable solutions and user experience. Architected enterprise-grade data pipelines processing terabytes of information while maintaining 99.9% reliability. Delivered end-to-end solutions from data ingestion to interactive dashboards, significantly improving operational efficiency and decision-making capabilities across multiple departments.',
+      description: [
+        'Led comprehensive data engineering and full-stack development initiatives for university systems',
+        'Architected enterprise-grade data pipelines processing terabytes of information with 99.9% reliability',
+        'Delivered end-to-end solutions from data ingestion to interactive dashboards',
+        'Improved operational efficiency and decision-making capabilities across multiple departments'
+      ],
       details: [
         'Built scalable full-stack applications serving 10K+ users with responsive dashboards',
         'Developed robust ETL pipelines processing multi-terabyte datasets with 99.9% reliability',
@@ -38,7 +43,12 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
       company: 'FireEye',
       period: 'Sep 2024 – Dec 2024',
       location: 'Charlotte, NC',
-      description: 'Developed cutting-edge data solutions for cybersecurity analytics, focusing on high-performance data processing and intuitive user interfaces. Built modern ETL frameworks that significantly reduced development time while improving data quality and processing speed. Created full-stack applications that transformed complex security data into actionable insights for operations teams.',
+      description: [
+        'Developed cutting-edge data solutions for cybersecurity analytics',
+        'Built modern ETL frameworks reducing development time significantly',
+        'Created full-stack applications transforming complex security data into actionable insights',
+        'Focused on high-performance data processing and intuitive user interfaces'
+      ],
       details: [
         'Developed scalable data solutions using Python, Java, and JavaScript',
         'Implemented ETL frameworks reducing development time by 70%',
@@ -52,7 +62,12 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
       company: 'Bank of America',
       period: 'May 2024 – Jul 2024',
       location: 'Charlotte, NC',
-      description: 'Designed and implemented enterprise-grade ETL pipelines for critical financial data processing systems, achieving exceptional performance improvements. Developed sophisticated dashboard applications enabling real-time financial analytics and decision-making. Established comprehensive engineering best practices for data integrity, automated testing, and performance optimization across the organization.',
+      description: [
+        'Designed and implemented enterprise-grade ETL pipelines for critical financial data processing',
+        'Achieved exceptional performance improvements in financial systems',
+        'Developed sophisticated dashboard applications enabling real-time financial analytics',
+        'Established comprehensive engineering best practices for data integrity and testing'
+      ],
       details: [
         'Built ETL pipelines achieving 85% improvement in query performance',
         'Developed dashboard applications enabling real-time financial analytics',
@@ -66,7 +81,12 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
       company: 'Tata Consultancy Services',
       period: 'Jul 2021 – Jul 2023',
       location: 'Chennai, India',
-      description: 'Architected and deployed large-scale cloud-native data platforms supporting enterprise operations for 200+ stakeholders across multiple business units. Developed sophisticated ETL frameworks orchestrating hundreds of daily data pipelines with exceptional reliability. Led cross-functional teams to deliver mission-critical projects while mentoring junior engineers and establishing organizational best practices.',
+      description: [
+        'Architected and deployed large-scale cloud-native data platforms',
+        'Supported enterprise operations for 200+ stakeholders across multiple business units',
+        'Developed sophisticated ETL frameworks orchestrating hundreds of daily data pipelines',
+        'Led cross-functional teams and mentored junior engineers'
+      ],
       details: [
         'Built scalable data platforms with unified access to enterprise data',
         'Developed ETL frameworks orchestrating 300+ daily pipelines with 99.9% reliability',
@@ -80,7 +100,12 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
       company: 'CricClubs (Startup)',
       period: 'Feb 2021 – Jul 2021',
       location: 'Hyderabad, India',
-      description: 'Built comprehensive analytics platform from ground up for a rapidly growing sports technology startup serving 500K+ active users. Developed high-performance web applications capable of handling massive concurrent user loads while maintaining optimal performance. Implemented automated data processing systems connecting diverse external data sources to provide real-time insights and analytics.',
+      description: [
+        'Built comprehensive analytics platform from ground up for rapidly growing sports technology startup',
+        'Served 500K+ active users with high-performance web applications',
+        'Handled massive concurrent user loads while maintaining optimal performance',
+        'Implemented automated data processing systems connecting diverse external data sources'
+      ],
       details: [
         'Developed analytics platform enabling real-time data processing',
         'Built responsive web applications serving 200K+ concurrent users',
@@ -94,7 +119,12 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
       company: 'Jawaharlal Nehru Technological University',
       period: 'Jul 2020 – Feb 2021',
       location: 'Hyderabad, India',
-      description: 'Conducted innovative research in data processing optimization and developed novel frameworks for academic research dataset integration. Implemented advanced optimization strategies that significantly improved query performance across various database systems. Contributed to establishing industry best practices that were adopted in academic coursework and research methodologies.',
+      description: [
+        'Conducted innovative research in data processing optimization',
+        'Developed novel frameworks for academic research dataset integration',
+        'Implemented advanced optimization strategies improving query performance',
+        'Contributed to establishing industry best practices for academic research'
+      ],
       details: [
         'Created configurable frameworks for research dataset integration',
         'Implemented optimization strategies improving query performance by 45%',
@@ -175,9 +205,14 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
                     </motion.div>
                   </div>
                   
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                    {exp.description}
-                  </p>
+                  <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                    {exp.description.map((point, pointIndex) => (
+                      <li key={pointIndex} className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 flex-shrink-0" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
                   
                   <AnimatePresence>
                     {expandedCard === index && (

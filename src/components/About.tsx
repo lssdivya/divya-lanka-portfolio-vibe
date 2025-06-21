@@ -24,6 +24,11 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
     },
   });
 
+  const [statsRef, statsInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+
   const textRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -140,7 +145,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
             number: {
               density: {
                 enable: true,
-                area: 800,
+                value_area: 800,
               },
               value: 60,
             },
@@ -207,6 +212,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
         </div>
 
         <motion.div
+          ref={statsRef}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -216,14 +222,14 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
             { end: 4, label: 'Years Experience', suffix: '+' },
             { end: 48, label: 'Projects Delivered', suffix: '' },
             { end: 100, label: 'Users Served', suffix: 'K+' },
-            { end: 1000, label: 'Cups of Coffee', suffix: '?', icon: Coffee, note: 'Not sure though...' },
+            { end: 1000, label: 'Cups of Coffee', suffix: '?', icon: Coffee, note: 'Not sure though, haha' },
           ].map((stat, index) => (
             <div
               key={index}
-              className="text-center bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200 dark:border-gray-700"
+              className="text-center glass-effect rounded-xl p-6 border border-white/20 dark:border-gray-700/50"
             >
               <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2 flex items-center justify-center gap-2">
-                <AnimatedCounter end={stat.end} suffix={stat.suffix} isInView={inView} />
+                <AnimatedCounter end={stat.end} suffix={stat.suffix} isInView={statsInView} />
                 {stat.icon && <stat.icon size={32} className="text-amber-500" />}
               </div>
               <div className="text-gray-600 dark:text-gray-400 font-medium">
