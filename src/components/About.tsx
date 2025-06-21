@@ -1,10 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedCounter from './AnimatedCounter';
 import { Coffee, Award } from 'lucide-react';
+import { useCallback } from "react";
+import type { Container, Engine } from "@tsparticles/engine";
+import Particles from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,6 +32,14 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
 
   const words = aboutText.split(' ');
 
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadSlim(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container: Container | undefined) => {
+    // Particles loaded callback
+  }, []);
+
   useEffect(() => {
     if (!textRef.current || !containerRef.current) return;
 
@@ -40,7 +52,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
         start: "top center",
         end: "bottom center",
         pin: true,
-        scrub: 1,
+        scrub: 2, // Slower scroll effect (was 1)
         onUpdate: (self) => {
           const progress = self.progress;
           const totalWords = spans.length;
@@ -50,13 +62,13 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
             if (index <= currentIndex) {
               gsap.to(span, {
                 color: darkMode ? '#ffffff' : '#000000',
-                duration: 0.2,
+                duration: 0.3,
                 ease: "power2.out"
               });
             } else {
               gsap.to(span, {
-                color: darkMode ? '#6b7280' : '#374151',
-                duration: 0.2,
+                color: darkMode ? '#6b7280' : '#94a3b8', // Better contrast in light mode
+                duration: 0.3,
                 ease: "power2.out"
               });
             }
@@ -72,8 +84,82 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
   }, [darkMode]);
 
   return (
-    <section id="about" ref={ref} className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/10 dark:to-purple-900/10" />
+    <section id="about" ref={ref} className="py-20 relative overflow-hidden min-h-screen">
+      {/* Animated background */}
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        loaded={particlesLoaded}
+        options={{
+          background: {
+            color: {
+              value: "transparent",
+            },
+          },
+          fpsLimit: 120,
+          interactivity: {
+            events: {
+              onClick: {
+                enable: false,
+              },
+              onHover: {
+                enable: true,
+                mode: "repulse",
+              },
+              resize: true,
+            },
+            modes: {
+              repulse: {
+                distance: 100,
+                duration: 0.4,
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: darkMode ? "#8b5cf6" : "#a855f7",
+            },
+            links: {
+              color: darkMode ? "#ec4899" : "#f472b6",
+              distance: 150,
+              enable: true,
+              opacity: 0.2,
+              width: 1,
+            },
+            move: {
+              direction: "none",
+              enable: true,
+              outModes: {
+                default: "bounce",
+              },
+              random: false,
+              speed: 1,
+              straight: false,
+            },
+            number: {
+              density: {
+                enable: true,
+                area: 800,
+              },
+              value: 60,
+            },
+            opacity: {
+              value: 0.3,
+            },
+            shape: {
+              type: "circle",
+            },
+            size: {
+              value: { min: 1, max: 3 },
+            },
+          },
+          detectRetina: true,
+        }}
+        className="absolute inset-0"
+      />
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#13131a] via-[#1f1f3f] to-[#0f0f23] dark:opacity-90 opacity-95" />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -89,25 +175,32 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           </h2>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto pt-20" ref={containerRef}>
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-xl border border-gray-200 dark:border-gray-700 min-h-[60vh] flex items-center">
+        <div className="pt-24">
+          <div className="max-w-4xl mx-auto" ref={containerRef}>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-lg md:text-xl leading-relaxed"
-              ref={textRef}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-xl border border-gray-200 dark:border-gray-700 min-h-[60vh] flex items-center"
             >
-              {words.map((word, index) => (
-                <span
-                  key={index}
-                  className={`inline-block mr-2 transition-colors duration-200 ${
-                    darkMode ? 'text-gray-500' : 'text-gray-700'
-                  }`}
-                >
-                  {word}
-                </span>
-              ))}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-lg md:text-xl leading-relaxed"
+                ref={textRef}
+              >
+                {words.map((word, index) => (
+                  <span
+                    key={index}
+                    className={`inline-block mr-2 transition-colors duration-300 ${
+                      darkMode ? 'text-gray-500' : 'text-slate-400'
+                    }`}
+                  >
+                    {word}
+                  </span>
+                ))}
+              </motion.div>
             </motion.div>
           </div>
         </div>

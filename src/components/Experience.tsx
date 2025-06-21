@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -104,12 +105,7 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
     },
   ];
 
-  console.log('Experience component rendering, experiences count:', experiences.length);
-  console.log('InView status:', inView);
-  console.log('Expanded card:', expandedCard);
-
   const toggleCard = (index: number) => {
-    console.log('Toggling card:', index);
     setExpandedCard(expandedCard === index ? null : index);
   };
 
@@ -126,7 +122,7 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Work Experience
+              Work Experiences
             </span>
           </h2>
         </motion.div>
@@ -136,85 +132,82 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500 hidden md:block" />
           
           <div className="space-y-8">
-            {experiences.map((exp, index) => {
-              console.log(`Rendering experience ${index}:`, exp.title);
-              return (
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className={`relative ${index % 2 === 0 ? 'md:ml-20' : 'md:ml-20 md:pl-8'}`}
+              >
+                {/* Timeline dot */}
+                <div className="absolute -left-12 top-6 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full hidden md:block" />
+                
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className={`relative ${index % 2 === 0 ? 'md:ml-20' : 'md:ml-20 md:pl-8'}`}
+                  whileHover={{ y: -5 }}
+                  className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                  onClick={() => toggleCard(index)}
                 >
-                  {/* Timeline dot */}
-                  <div className="absolute -left-12 top-6 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full hidden md:block" />
-                  
-                  <motion.div
-                    whileHover={{ y: -5 }}
-                    className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 cursor-pointer"
-                    onClick={() => toggleCard(index)}
-                  >
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                          {exp.title}
-                        </h3>
-                        <div className={`text-lg font-semibold bg-gradient-to-r ${exp.gradient} bg-clip-text text-transparent mb-2`}>
-                          {exp.company}
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                        {exp.title}
+                      </h3>
+                      <div className={`text-lg font-semibold bg-gradient-to-r ${exp.gradient} bg-clip-text text-transparent mb-2`}>
+                        {exp.company}
+                      </div>
+                      <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+                        <div className="flex items-center gap-1">
+                          <Calendar size={14} />
+                          {exp.period}
                         </div>
-                        <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
-                          <div className="flex items-center gap-1">
-                            <Calendar size={14} />
-                            {exp.period}
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <MapPin size={14} />
-                            {exp.location}
-                          </div>
+                        <div className="flex items-center gap-1">
+                          <MapPin size={14} />
+                          {exp.location}
                         </div>
                       </div>
-                      <motion.div
-                        animate={{ rotate: expandedCard === index ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {expandedCard === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                      </motion.div>
                     </div>
-                    
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                      {exp.description}
-                    </p>
-                    
-                    <AnimatePresence>
-                      {expandedCard === index && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          <ul className="space-y-2 mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                            {exp.details.map((detail, detailIndex) => (
-                              <motion.li
-                                key={detailIndex}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: detailIndex * 0.1 }}
-                                className="flex items-start gap-2 text-gray-600 dark:text-gray-300"
-                              >
-                                <div className="w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 flex-shrink-0" />
-                                {detail}
-                              </motion.li>
-                            ))}
-                          </ul>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
+                    <motion.div
+                      animate={{ rotate: expandedCard === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {expandedCard === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                    </motion.div>
+                  </div>
+                  
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                    {exp.description}
+                  </p>
+                  
+                  <AnimatePresence>
+                    {expandedCard === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <ul className="space-y-2 mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                          {exp.details.map((detail, detailIndex) => (
+                            <motion.li
+                              key={detailIndex}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: detailIndex * 0.1 }}
+                              className="flex items-start gap-2 text-gray-600 dark:text-gray-300"
+                            >
+                              <div className="w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 flex-shrink-0" />
+                              {detail}
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
-              );
-            })}
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
