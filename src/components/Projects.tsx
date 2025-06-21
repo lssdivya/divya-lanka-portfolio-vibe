@@ -47,9 +47,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
   ];
 
   return (
-    <section id="projects" ref={ref} className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-black" />
-      
+    <section id="projects" ref={ref} className="py-20 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -72,7 +70,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ y: -10, scale: 1.05 }}
-              className="group bg-black backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-pink-500/20 border border-purple-600 hover:shadow-2xl hover:shadow-pink-500/40 transition-all duration-300"
+              className="group bg-white backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-purple-500/20 border border-gray-200 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -88,11 +86,11 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-300 mb-3 line-clamp-3">
+                <p className="text-gray-600 mb-3 line-clamp-3">
                   {project.description}
                 </p>
                 
-                <p className="text-sm font-semibold text-gray-300 mb-4">
+                <p className="text-sm font-semibold text-gray-700 mb-4">
                   {project.details}
                 </p>
                 
