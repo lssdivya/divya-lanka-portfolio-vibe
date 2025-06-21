@@ -13,7 +13,7 @@ const AnimatedBackground: React.FC = () => {
     if (!ctx) return;
 
     const particles: Particle[] = [];
-    const particleCount = 120;
+    const particleCount = 150;
 
     class Particle {
       x: number;
@@ -26,12 +26,12 @@ const AnimatedBackground: React.FC = () => {
       pulseSpeed: number;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 1.5;
-        this.vy = (Math.random() - 0.5) * 1.5;
-        this.size = Math.random() * 4 + 3;
-        this.opacity = Math.random() * 0.9 + 0.5;
+        this.x = Math.random() * window.innerWidth;
+        this.y = Math.random() * (window.innerHeight * 3); // Cover 3x viewport height
+        this.vx = (Math.random() - 0.5) * 2;
+        this.vy = (Math.random() - 0.5) * 2;
+        this.size = Math.random() * 6 + 4;
+        this.opacity = Math.random() * 0.8 + 0.6;
         this.pulseSpeed = Math.random() * 0.02 + 0.01;
         
         const colors = ['#8B5CF6', '#EC4899', '#F472B6', '#A855F7', '#C084FC'];
@@ -42,10 +42,13 @@ const AnimatedBackground: React.FC = () => {
         this.x += this.vx;
         this.y += this.vy;
 
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        // Wrap around screen bounds
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
 
-        this.opacity = (Math.sin(time * this.pulseSpeed) + 1) * 0.4 + 0.4;
+        this.opacity = (Math.sin(time * this.pulseSpeed) + 1) * 0.3 + 0.5;
       }
 
       draw() {
@@ -57,16 +60,16 @@ const AnimatedBackground: React.FC = () => {
         // Enhanced glow effect
         const gradient = ctx.createRadialGradient(
           this.x, this.y, 0,
-          this.x, this.y, this.size * 8
+          this.x, this.y, this.size * 10
         );
         
         gradient.addColorStop(0, this.color);
-        gradient.addColorStop(0.3, this.color + '80');
+        gradient.addColorStop(0.3, this.color + '90');
         gradient.addColorStop(1, 'transparent');
         
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size * 4, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.size * 6, 0, Math.PI * 2);
         ctx.fill();
         
         ctx.restore();
@@ -74,8 +77,18 @@ const AnimatedBackground: React.FC = () => {
     }
 
     const resizeCanvas = () => {
+      const docHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight,
+        window.innerHeight * 3
+      );
+      
       canvas.width = window.innerWidth;
-      canvas.height = Math.max(window.innerHeight, document.documentElement.scrollHeight);
+      canvas.height = docHeight;
+      canvas.style.height = `${docHeight}px`;
     };
 
     const init = () => {
@@ -96,7 +109,7 @@ const AnimatedBackground: React.FC = () => {
 
       // Enhanced connections
       ctx.save();
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 3;
 
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -104,7 +117,7 @@ const AnimatedBackground: React.FC = () => {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 150) {
+          if (distance < 200) {
             const gradient = ctx.createLinearGradient(
               particles[i].x, particles[i].y,
               particles[j].x, particles[j].y
@@ -114,7 +127,7 @@ const AnimatedBackground: React.FC = () => {
             gradient.addColorStop(1, '#EC4899');
             
             ctx.strokeStyle = gradient;
-            ctx.globalAlpha = (150 - distance) / 150 * 0.7;
+            ctx.globalAlpha = (200 - distance) / 200 * 0.8;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -127,9 +140,14 @@ const AnimatedBackground: React.FC = () => {
       animationId = requestAnimationFrame(animate);
     };
 
+    // Initial setup
     resizeCanvas();
     init();
-    animate(0);
+    
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      animate(0);
+    }, 100);
 
     const handleResize = () => {
       resizeCanvas();
@@ -142,10 +160,12 @@ const AnimatedBackground: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
+    document.addEventListener('DOMContentLoaded', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('DOMContentLoaded', handleResize);
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
@@ -156,78 +176,82 @@ const AnimatedBackground: React.FC = () => {
     <>
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-10"
-        style={{ opacity: 0.9, height: '100vh', minHeight: '100%' }}
+        className="fixed top-0 left-0 pointer-events-none z-10 w-full"
+        style={{ 
+          opacity: 0.9,
+          minHeight: '300vh',
+          display: 'block'
+        }}
       />
       
-      {/* Enhanced visible geometric shapes covering entire page */}
-      <div className="fixed inset-0 pointer-events-none z-5" style={{ height: '200vh' }}>
+      {/* Static geometric shapes that stay visible */}
+      <div className="fixed inset-0 pointer-events-none z-5 w-full" style={{ minHeight: '300vh' }}>
         {/* Floating circles */}
-        {[...Array(12)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-32 h-32 border-2 border-purple-400/70 rounded-full"
+            className="absolute w-40 h-40 border-2 border-purple-400/80 rounded-full"
             style={{
-              left: `${5 + (i * 8)}%`,
-              top: `${10 + (i * 15)}%`,
+              left: `${Math.random() * 90}%`,
+              top: `${Math.random() * 250}%`,
             }}
             animate={{
-              y: [0, -80, 0],
+              y: [0, -100, 0],
               rotate: [0, 360],
-              scale: [1, 1.6, 1],
-              opacity: [0.5, 1, 0.5],
+              scale: [1, 1.8, 1],
+              opacity: [0.6, 1, 0.6],
             }}
             transition={{
-              duration: 10 + i * 2,
+              duration: 12 + i * 2,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: i * 0.8,
+              delay: i * 0.5,
             }}
           />
         ))}
         
         {/* Floating squares */}
-        {[...Array(10)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={`square-${i}`}
-            className="absolute w-24 h-24 border-2 border-pink-400/70"
+            className="absolute w-32 h-32 border-2 border-pink-400/80"
             style={{
-              right: `${5 + (i * 9)}%`,
-              top: `${20 + (i * 18)}%`,
+              right: `${Math.random() * 90}%`,
+              top: `${Math.random() * 280}%`,
               transform: 'rotate(45deg)',
             }}
             animate={{
-              x: [0, 60, 0],
+              x: [0, 80, 0],
               rotate: [45, 405],
-              opacity: [0.6, 1, 0.6],
-              scale: [1, 1.4, 1],
+              opacity: [0.7, 1, 0.7],
+              scale: [1, 1.6, 1],
             }}
             transition={{
-              duration: 12 + i * 1.5,
+              duration: 15 + i * 1.5,
               repeat: Infinity,
               ease: "linear",
-              delay: i * 1.2,
+              delay: i * 1,
             }}
           />
         ))}
 
-        {/* Enhanced gradient orbs */}
-        {[...Array(8)].map((_, i) => (
+        {/* Large gradient orbs */}
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={`orb-${i}`}
-            className="absolute w-40 h-40 rounded-full bg-gradient-to-r from-purple-500/50 to-pink-500/50 blur-xl"
+            className="absolute w-60 h-60 rounded-full bg-gradient-to-r from-purple-500/60 to-pink-500/60 blur-2xl"
             style={{
-              left: `${Math.random() * 90}%`,
-              top: `${Math.random() * 150}%`,
+              left: `${Math.random() * 80}%`,
+              top: `${Math.random() * 200}%`,
             }}
             animate={{
-              x: [0, Math.random() * 150 - 75, 0],
-              y: [0, Math.random() * 150 - 75, 0],
-              scale: [1, 2.2, 1],
-              opacity: [0.4, 0.9, 0.4],
+              x: [0, Math.random() * 200 - 100, 0],
+              y: [0, Math.random() * 200 - 100, 0],
+              scale: [1, 2.5, 1],
+              opacity: [0.5, 0.9, 0.5],
             }}
             transition={{
-              duration: 15 + i * 2,
+              duration: 18 + i * 2,
               repeat: Infinity,
               ease: "easeInOut",
               delay: i * 2,

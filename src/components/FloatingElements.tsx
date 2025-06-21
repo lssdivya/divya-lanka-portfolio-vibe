@@ -7,100 +7,100 @@ const FloatingElements: React.FC = () => {
   const icons = [Code, Database, Zap, Star, Heart, Sparkles, Cpu, Wifi, Globe, Rocket];
   
   return (
-    <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden" style={{ height: '200vh' }}>
+    <div className="fixed inset-0 pointer-events-none z-20 overflow-hidden w-full" style={{ minHeight: '300vh' }}>
       {/* Enhanced floating icons covering entire page */}
       {icons.map((Icon, index) => (
         <motion.div
           key={index}
           className="absolute text-purple-300"
           style={{
-            left: `${Math.random() * 95}%`,
-            top: `${Math.random() * 180}%`,
+            left: `${Math.random() * 90}%`,
+            top: `${Math.random() * 250}%`,
           }}
           animate={{
-            y: [0, -200, 0],
-            x: [0, Math.random() * 120 - 60, 0],
+            y: [0, -300, 0],
+            x: [0, Math.random() * 150 - 75, 0],
             rotate: [0, 360, 0],
-            scale: [0.8, 2, 0.8],
-            opacity: [0.7, 1, 0.7],
+            scale: [1, 2.5, 1],
+            opacity: [0.8, 1, 0.8],
           }}
           transition={{
-            duration: 12 + Math.random() * 10,
+            duration: 15 + Math.random() * 10,
             repeat: Infinity,
-            delay: Math.random() * 8,
+            delay: Math.random() * 5,
             ease: "easeInOut",
           }}
         >
-          <Icon size={40 + Math.random() * 32} />
+          <Icon size={50 + Math.random() * 40} />
         </motion.div>
       ))}
       
       {/* Enhanced gradient orbs covering entire page */}
-      {[...Array(15)].map((_, i) => (
+      {[...Array(20)].map((_, i) => (
         <motion.div
           key={`orb-${i}`}
-          className="absolute rounded-full bg-gradient-to-r from-purple-400/50 to-pink-400/50 blur-2xl"
+          className="absolute rounded-full bg-gradient-to-r from-purple-400/70 to-pink-400/70 blur-3xl"
           style={{
-            width: `${180 + Math.random() * 150}px`,
-            height: `${180 + Math.random() * 150}px`,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 200}%`,
+            width: `${200 + Math.random() * 200}px`,
+            height: `${200 + Math.random() * 200}px`,
+            left: `${Math.random() * 90}%`,
+            top: `${Math.random() * 250}%`,
           }}
           animate={{
-            x: [0, Math.random() * 500 - 250, 0],
-            y: [0, Math.random() * 500 - 250, 0],
-            scale: [1, 2.5, 1],
-            opacity: [0.4, 0.9, 0.4],
+            x: [0, Math.random() * 600 - 300, 0],
+            y: [0, Math.random() * 600 - 300, 0],
+            scale: [1, 3, 1],
+            opacity: [0.5, 1, 0.5],
           }}
           transition={{
-            duration: 18 + Math.random() * 12,
+            duration: 20 + Math.random() * 15,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: Math.random() * 10,
+            delay: Math.random() * 8,
           }}
         />
       ))}
       
       {/* Enhanced flowing lines covering entire page */}
-      {[...Array(10)].map((_, i) => (
+      {[...Array(15)].map((_, i) => (
         <motion.div
           key={`line-${i}`}
-          className="absolute h-px bg-gradient-to-r from-transparent via-purple-400/90 to-transparent"
+          className="absolute h-1 bg-gradient-to-r from-transparent via-purple-400/90 to-transparent"
           style={{
-            width: '400px',
+            width: '500px',
             left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 180}%`,
+            top: `${Math.random() * 250}%`,
           }}
           animate={{
-            x: [-400, window.innerWidth + 400],
+            x: [-500, window.innerWidth + 500],
             opacity: [0, 1, 0],
           }}
           transition={{
-            duration: 8,
+            duration: 10,
             repeat: Infinity,
-            delay: i * 1.5,
+            delay: i * 2,
             ease: "linear",
           }}
         />
       ))}
 
       {/* Pulsing dots covering entire page */}
-      {[...Array(30)].map((_, i) => (
+      {[...Array(50)].map((_, i) => (
         <motion.div
           key={`dot-${i}`}
-          className="absolute w-3 h-3 bg-purple-400 rounded-full"
+          className="absolute w-4 h-4 bg-purple-400 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 200}%`,
+            left: `${Math.random() * 95}%`,
+            top: `${Math.random() * 250}%`,
           }}
           animate={{
-            scale: [1, 2.5, 1],
-            opacity: [0.5, 1, 0.5],
+            scale: [1, 3, 1],
+            opacity: [0.6, 1, 0.6],
           }}
           transition={{
-            duration: 3 + Math.random() * 3,
+            duration: 4 + Math.random() * 4,
             repeat: Infinity,
-            delay: Math.random() * 6,
+            delay: Math.random() * 8,
           }}
         />
       ))}
