@@ -90,9 +90,11 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="text-5xl font-bold text-purple-600 mb-6 lg:mb-8"
+              className="text-5xl font-bold mb-6 lg:mb-8"
             >
-              About Me
+              <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                About Me
+              </span>
             </motion.h2>
             
             <motion.div
@@ -179,8 +181,10 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-12"
         >
-          <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-br from-purple-600 to-purple-500 bg-clip-text text-transparent">
-            Key Achievements
+          <h3 className="text-2xl font-bold text-center mb-8">
+            <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Key Achievements
+            </span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -208,4 +212,3 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
 };
 
 export default About;
-

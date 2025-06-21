@@ -58,7 +58,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-br from-purple-600 to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
               Featured Projects
             </span>
           </h2>

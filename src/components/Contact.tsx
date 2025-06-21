@@ -88,7 +88,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-br from-purple-600 to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
               Want to work together on building some cool stuff?
             </span>
           </h2>
@@ -102,8 +102,10 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
             whileHover={{ scale: 1.02 }}
             className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-purple-500/20 border border-purple-600 hover:shadow-purple-500/40 transition-all duration-300"
           >
-            <h3 className="text-2xl font-bold mb-6 text-purple-500">
-              Send me a message
+            <h3 className="text-2xl font-bold mb-6">
+              <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                Send me a message
+              </span>
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -212,8 +214,10 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
               whileHover={{ scale: 1.02 }}
               className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-purple-500/20 border border-purple-600 hover:shadow-purple-500/40 transition-all duration-300"
             >
-              <h3 className="text-2xl font-bold mb-6 text-purple-500">
-                Connect with me
+              <h3 className="text-2xl font-bold mb-6">
+                <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                  Connect with me
+                </span>
               </h3>
               
               <div className="space-y-4">
@@ -240,7 +244,11 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
               whileHover={{ scale: 1.02 }}
               className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-purple-500/20 border border-purple-600 hover:shadow-purple-500/40 transition-all duration-300"
             >
-              <h4 className="text-lg font-bold mb-4 text-purple-300">Let's discuss!</h4>
+              <h4 className="text-lg font-bold mb-4">
+                <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                  Let's discuss!
+                </span>
+              </h4>
               <p className="text-gray-300 mb-4">
                 Don't like forms? Send me an <span className="text-purple-400 font-semibold">email</span>. 👋
               </p>
