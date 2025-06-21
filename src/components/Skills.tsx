@@ -135,13 +135,13 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: groupIndex * 0.1 }}
               whileHover={{ y: -5, scale: 1.05 }}
-              className="bg-black backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-purple-500/20 border border-purple-600 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300"
+              className="bg-black backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-pink-500/20 border border-purple-600 hover:shadow-2xl hover:shadow-pink-500/40 transition-all duration-300"
             >
               <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-500 rounded-lg flex items-center justify-center mb-4">
                 <group.headerIcon className="w-6 h-6 text-white" />
               </div>
               
-              <h3 className="text-xl font-bold mb-4 bg-gradient-to-br from-purple-600 to-purple-500 bg-clip-text text-transparent">
+              <h3 className="text-xl font-bold mb-4 text-white">
                 {group.title}
               </h3>
               

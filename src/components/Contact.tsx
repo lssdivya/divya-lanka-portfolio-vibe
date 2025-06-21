@@ -100,7 +100,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
             whileHover={{ scale: 1.02 }}
-            className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-purple-500/20 border border-purple-600 hover:shadow-purple-500/40 transition-all duration-300"
+            className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-pink-500/20 border border-purple-600 hover:shadow-pink-500/40 transition-all duration-300"
           >
             <h3 className="text-2xl font-bold mb-6">
               <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
@@ -212,7 +212,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
           >
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-purple-500/20 border border-purple-600 hover:shadow-purple-500/40 transition-all duration-300"
+              className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-pink-500/20 border border-purple-600 hover:shadow-pink-500/40 transition-all duration-300"
             >
               <h3 className="text-2xl font-bold mb-6">
                 <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
@@ -242,7 +242,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
             
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-purple-500/20 border border-purple-600 hover:shadow-purple-500/40 transition-all duration-300"
+              className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-pink-500/20 border border-purple-600 hover:shadow-pink-500/40 transition-all duration-300"
             >
               <h4 className="text-lg font-bold mb-4">
                 <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">

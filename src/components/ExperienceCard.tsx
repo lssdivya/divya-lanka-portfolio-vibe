@@ -31,10 +31,10 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       {/* Timeline dot */}
       <div className="absolute -left-6 top-6 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black hidden md:block" />
       
-      <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-xl border border-purple-500/30 shadow-xl">
+      <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-xl border border-purple-600 shadow-xl shadow-pink-500/20">
         <div className="flex justify-between items-start">
           <div className="flex-1">
-            <h3 className="text-xl font-bold mb-2 text-purple-600">
+            <h3 className="text-xl font-bold mb-2 text-white">
               {experience.title}
             </h3>
             <div className="text-lg font-semibold text-white mb-2">
@@ -85,7 +85,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               className="overflow-hidden"
             >
               <div className="mt-4 pt-4 border-t border-purple-500/30">
-                <h4 className="text-sm font-semibold text-purple-300 mb-2">Key Achievements:</h4>
+                <h4 className="text-sm font-semibold text-purple-300 mb-2">
+                  <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Key Achievements:
+                  </span>
+                </h4>
                 <ul className="space-y-2">
                   {experience.details.map((detail, detailIndex) => (
                     <motion.li
