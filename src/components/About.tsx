@@ -37,14 +37,6 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
 
   const words = aboutText.split(' ');
 
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    // Particles loaded callback
-  }, []);
-
   useEffect(() => {
     if (!textRef.current || !containerRef.current) return;
 
@@ -57,7 +49,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
         start: "top center",
         end: "bottom center",
         pin: true,
-        scrub: 4, // Much slower scroll effect for better readability
+        scrub: 8, // Slower scroll effect
         onUpdate: (self) => {
           const progress = self.progress;
           const totalWords = spans.length;
@@ -66,13 +58,13 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           spans.forEach((span, index) => {
             if (index <= currentIndex) {
               gsap.to(span, {
-                color: '#ffffff',
+                color: '#e2e8f0',
                 duration: 0.5,
                 ease: "power2.out"
               });
             } else {
               gsap.to(span, {
-                color: '#6b7280',
+                color: '#64748b',
                 duration: 0.5,
                 ease: "power2.out"
               });
@@ -93,8 +85,6 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
       {/* Animated background */}
       <Particles
         id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
         options={{
           background: {
             color: {
@@ -165,7 +155,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
       />
       
       {/* Darker gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0f] via-[#111125] to-[#050508]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0f0f23] via-[#1a1a2e] to-[#16213e]" />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -175,7 +165,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-slate-200 to-slate-300 bg-clip-text text-transparent">
               About Me
             </span>
           </h2>
@@ -187,7 +177,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="bg-gray-800/80 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-xl border border-gray-700 min-h-[60vh] flex items-center"
+              className="bg-slate-800/60 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-xl border border-slate-700/50 min-h-[60vh] flex items-center"
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -199,7 +189,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
                 {words.map((word, index) => (
                   <span
                     key={index}
-                    className="inline-block mr-2 transition-colors duration-500 text-gray-500"
+                    className="inline-block mr-2 transition-colors duration-500 text-slate-500"
                   >
                     {word}
                   </span>
@@ -224,16 +214,16 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           ].map((stat, index) => (
             <div
               key={index}
-              className="text-center glass-effect rounded-xl p-6 border border-gray-700/50"
+              className="text-center bg-slate-800/40 backdrop-blur-sm rounded-xl p-6 border border-slate-700/30 shadow-lg"
             >
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent mb-2 flex items-center justify-center gap-2">
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-slate-200 to-slate-300 bg-clip-text text-transparent mb-2 flex items-center justify-center gap-2">
                 <AnimatedCounter end={stat.end} suffix={stat.suffix} isInView={statsInView} />
                 {stat.icon && <stat.icon size={32} className="text-amber-500" />}
               </div>
-              <div className="text-gray-400 font-medium">
+              <div className="text-slate-400 font-medium">
                 {stat.label}
-                {stat.note && <div className="text-xs text-gray-500 mt-1">{stat.note}</div>}
-                {index === 1 && <div className="text-xs text-gray-500 mt-1">Still counting...</div>}
+                {stat.note && <div className="text-xs text-slate-500 mt-1">{stat.note}</div>}
+                {index === 1 && <div className="text-xs text-slate-500 mt-1">Still counting...</div>}
               </div>
             </div>
           ))}
@@ -245,30 +235,30 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-12"
         >
-          <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">
+          <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-slate-200 to-slate-300 bg-clip-text text-transparent">
             Key Achievements
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-slate-800/20 rounded-xl p-6 border border-slate-700 text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-slate-500 to-slate-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award size={24} className="text-white" />
+            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700/40 text-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award size={24} className="text-slate-200" />
               </div>
-              <div className="font-semibold text-slate-300 mb-2">Leadership</div>
-              <div className="text-gray-400 text-sm">Software Development Club Lead</div>
+              <div className="font-semibold text-slate-200 mb-2">Leadership</div>
+              <div className="text-slate-400 text-sm">Software Development Club Lead</div>
             </div>
-            <div className="bg-slate-800/20 rounded-xl p-6 border border-slate-700 text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-slate-500 to-slate-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award size={24} className="text-white" />
+            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700/40 text-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award size={24} className="text-slate-200" />
               </div>
-              <div className="font-semibold text-slate-300 mb-2">Teaching</div>
-              <div className="text-gray-400 text-sm">Graduate Teaching Assistant for Database Systems</div>
+              <div className="font-semibold text-slate-200 mb-2">Teaching</div>
+              <div className="text-slate-400 text-sm">Graduate Teaching Assistant for Database Systems</div>
             </div>
-            <div className="bg-slate-800/20 rounded-xl p-6 border border-slate-700 text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-slate-500 to-slate-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award size={24} className="text-white" />
+            <div className="bg-slate-800/30 rounded-xl p-6 border border-slate-700/40 text-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award size={24} className="text-slate-200" />
               </div>
-              <div className="font-semibold text-slate-300 mb-2">Research</div>
-              <div className="text-gray-400 text-sm">Graduate Research Assistant</div>
+              <div className="font-semibold text-slate-200 mb-2">Research</div>
+              <div className="text-slate-400 text-sm">Graduate Research Assistant</div>
             </div>
           </div>
         </motion.div>
