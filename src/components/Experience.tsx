@@ -9,9 +9,12 @@ interface ExperienceProps {
 }
 
 const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
+  console.log('Experience component is rendering');
+  
   const [ref, inView] = useInView({
     threshold: 0.3,
     onChange: (inView) => {
+      console.log('Experience inView changed:', inView);
       if (inView) setActiveSection('experience');
     },
   });
@@ -129,12 +132,15 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
     },
   ];
 
+  console.log('Experiences array length:', experiences.length);
+
   const toggleCard = (index: number) => {
     setExpandedCard(expandedCard === index ? null : index);
   };
 
   return (
     <section id="experience" ref={ref} className="py-20 relative overflow-hidden min-h-screen">
+      {console.log('Rendering Experience section')}
       <div className="absolute inset-0 bg-black" />
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -155,20 +161,15 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500 hidden md:block" />
           
           <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="relative md:ml-20"
-              >
-                <div className="absolute -left-12 top-6 w-4 h-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full hidden md:block" />
-                
+            {experiences.map((exp, index) => {
+              console.log(`Rendering experience ${index}:`, exp.title);
+              return (
                 <motion.div
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="bg-black backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-purple-500/20 border border-purple-500 hover:shadow-2xl hover:shadow-pink-500/40 transition-all duration-300 cursor-pointer"
-                  onClick={() => toggleCard(index)}
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="relative md:ml-20"
                 >
                   <div className="bg-blue-900 -m-8 mb-6 p-6 rounded-t-2xl border-b border-purple-500">
                     <div className="flex justify-between items-start">
@@ -236,8 +237,8 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
                     )}
                   </AnimatePresence>
                 </motion.div>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
