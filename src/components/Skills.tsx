@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -14,7 +13,8 @@ import {
   FaDocker, 
   FaGitAlt,
   FaCogs,
-  FaTerminal
+  FaTerminal,
+  FaMicrosoft
 } from 'react-icons/fa';
 import { 
   SiTypescript, 
@@ -23,7 +23,6 @@ import {
   SiApacheairflow, 
   SiGooglebigquery, 
   SiMongodb, 
-  SiMicrosoftazure, 
   SiKubernetes, 
   SiPandas, 
   SiNumpy, 
@@ -86,7 +85,7 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
       title: 'Cloud & DevOps',
       skills: [
         { name: 'AWS', icon: FaAws },
-        { name: 'Azure', icon: SiMicrosoftazure },
+        { name: 'Azure', icon: FaMicrosoft },
         { name: 'Docker', icon: FaDocker },
         { name: 'Kubernetes', icon: SiKubernetes },
         { name: 'CI/CD', icon: FaGitAlt },
