@@ -1,7 +1,7 @@
 
 import React, { useCallback } from 'react';
-import Particles from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
+import Particles from 'react-tsparticles';
+import { loadSlim } from 'tsparticles-slim';
 import type { Engine, ISourceOptions } from '@tsparticles/engine';
 
 const GlobalParticleBackground: React.FC = () => {
@@ -42,14 +42,14 @@ const GlobalParticleBackground: React.FC = () => {
     },
     particles: {
       color: {
-        value: ['#1e40af', '#7c3aed', '#db2777', '#a855f7', '#ec4899'],
+        value: ['#a855f7', '#ec4899', '#8b5cf6', '#f472b6', '#c084fc'],
       },
       links: {
-        color: '#7c3aed',
+        color: '#a855f7',
         distance: 150,
         enable: true,
-        opacity: 0.6,
-        width: 2,
+        opacity: 0.4,
+        width: 1,
       },
       move: {
         direction: 'none',
@@ -64,12 +64,12 @@ const GlobalParticleBackground: React.FC = () => {
       number: {
         density: {
           enable: true,
-          value_area: 800,
+          area: 800,
         },
         value: 80,
       },
       opacity: {
-        value: 0.8,
+        value: 0.6,
         animation: {
           enable: true,
           speed: 1,
