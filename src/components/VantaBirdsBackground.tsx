@@ -11,30 +11,31 @@ const VantaBirdsBackground: React.FC<VantaBirdsBackgroundProps> = ({ className =
 
   useEffect(() => {
     if (!vantaEffect.current && vantaRef.current) {
-      // Dynamically import VANTA Birds to avoid SSR issues
-      import('vanta/dist/vanta.birds.min.js').then((VANTA) => {
-        vantaEffect.current = VANTA.default({
-          el: vantaRef.current,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          backgroundColor: 0xf8fafc,
-          color1: 0xa855f7,
-          color2: 0xec4899,
-          colorMode: 'variance',
-          birdSize: 2.00,
-          wingSpan: 25.00,
-          speedLimit: 4.00,
-          separation: 20.00,
-          alignment: 20.00,
-          cohesion: 20.00,
-          quantity: 8.00
-        });
-      }).catch(console.error);
+      // Use the global VANTA from CDN
+      const effect = (window as any).VANTA?.BIRDS({
+        el: vantaRef.current,
+        THREE: (window as any).THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0xf8fafc,
+        color1: 0x7C3AED,
+        color2: 0xDB2777,
+        colorMode: 'variance',
+        birdSize: 1.3,
+        wingSpan: 20,
+        speedLimit: 4.0,
+        separation: 20.00,
+        alignment: 20.00,
+        cohesion: 20.00,
+        quantity: 4
+      });
+      
+      vantaEffect.current = effect;
     }
 
     return () => {
