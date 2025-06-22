@@ -9,12 +9,17 @@ interface ThemeToggleProps {
 }
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ darkMode, toggleTheme }) => {
+  console.log('ThemeToggle rendered - darkMode:', darkMode);
+
   return (
     <motion.button
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 1 }}
-      onClick={toggleTheme}
+      onClick={() => {
+        console.log('Theme toggle clicked, current darkMode:', darkMode);
+        toggleTheme();
+      }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       className="fixed top-20 right-4 z-50 w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow duration-300"
