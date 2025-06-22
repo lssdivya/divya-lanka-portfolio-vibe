@@ -9,9 +9,6 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import AnimatedBackground from '../components/AnimatedBackground';
-import FloatingElements from '../components/FloatingElements';
-import VantaNetBackground from '../components/VantaNetBackground';
 import ScrollProgressBar from '../components/ScrollProgressBar';
 
 export default function Index() {
@@ -19,24 +16,12 @@ export default function Index() {
 
   return (
     <>
-      {/* Background layers - lowest z-index */}
-      <div className="fixed inset-0 z-0">
-        {activeSection === 'hero' ? (
-          <>
-            <AnimatedBackground />
-            <FloatingElements />
-          </>
-        ) : (
-          <VantaNetBackground />
-        )}
-      </div>
-      
       {/* Progress bar */}
       <div className="relative z-50">
         <ScrollProgressBar />
       </div>
 
-      {/* Main content - higher z-index */}
+      {/* Main content */}
       <motion.div
         className="relative z-10 min-h-screen transition-colors duration-300 overflow-x-hidden"
         initial={{ opacity: 0 }}
