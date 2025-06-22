@@ -11,9 +11,12 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import VantaBirdsBackground from '../components/VantaBirdsBackground';
 import ScrollProgressBar from '../components/ScrollProgressBar';
+import ThemeToggle from '../components/ThemeToggle';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function Index() {
   const [activeSection, setActiveSection] = useState('hero');
+  const { darkMode, toggleTheme } = useTheme();
 
   return (
     <>
@@ -24,6 +27,9 @@ export default function Index() {
       <div className="relative z-50">
         <ScrollProgressBar />
       </div>
+
+      {/* Theme Toggle */}
+      <ThemeToggle darkMode={darkMode} toggleTheme={toggleTheme} />
 
       {/* Main content */}
       <motion.div
@@ -43,7 +49,7 @@ export default function Index() {
             transition={{ duration: 0.8, staggerChildren: 0.2 }}
           >
             <Hero setActiveSection={setActiveSection} />
-            <About setActiveSection={setActiveSection} darkMode />
+            <About setActiveSection={setActiveSection} darkMode={darkMode} />
             <Skills setActiveSection={setActiveSection} />
             <Experience setActiveSection={setActiveSection} />
             <Projects setActiveSection={setActiveSection} />
