@@ -18,6 +18,8 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState('hero');
   const { darkMode, toggleTheme } = useTheme();
 
+  console.log('Index component rendered with darkMode:', darkMode);
+
   return (
     <>
       {/* Vanta Birds background - always show on home page */}
@@ -33,7 +35,9 @@ export default function Index() {
 
       {/* Main content */}
       <motion.div
-        className="relative z-10 min-h-screen transition-colors duration-300 overflow-x-hidden"
+        className={`relative z-10 min-h-screen transition-colors duration-300 overflow-x-hidden ${
+          darkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-gray-900'
+        }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
