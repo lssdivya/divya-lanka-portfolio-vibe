@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 const AnimatedBackground: React.FC = () => {
@@ -12,7 +11,7 @@ const AnimatedBackground: React.FC = () => {
     if (!ctx) return;
 
     let particles: Particle[] = [];
-    const particleCount = 120;
+    const particleCount = 80;
 
     class Particle {
       x: number;
@@ -28,14 +27,14 @@ const AnimatedBackground: React.FC = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 1.2;
-        this.vy = (Math.random() - 0.5) * 1.2;
-        this.size = Math.random() * 4 + 2;
-        this.opacity = Math.random() * 0.8 + 0.4;
+        this.vx = (Math.random() - 0.5) * 1.5;
+        this.vy = (Math.random() - 0.5) * 1.5;
+        this.size = Math.random() * 6 + 3;
+        this.opacity = Math.random() * 0.7 + 0.3;
         this.pulsePhase = Math.random() * Math.PI * 2;
-        this.pulseSpeed = Math.random() * 0.02 + 0.01;
+        this.pulseSpeed = Math.random() * 0.03 + 0.02;
         
-        // Dark colors for white background visibility
+        // Bright, vibrant colors for visibility
         const colors = [
           '#8B5CF6', // Purple
           '#EC4899', // Pink
@@ -44,7 +43,7 @@ const AnimatedBackground: React.FC = () => {
           '#F59E0B', // Orange
           '#EF4444', // Red
           '#6366F1', // Indigo
-          '#8B5A2B', // Brown
+          '#14B8A6', // Teal
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
@@ -53,14 +52,17 @@ const AnimatedBackground: React.FC = () => {
         this.x += this.vx;
         this.y += this.vy;
 
-        if (this.x < 0) this.x = canvas.width;
-        if (this.x > canvas.width) this.x = 0;
-        if (this.y < 0) this.y = canvas.height;
-        if (this.y > canvas.height) this.y = 0;
+        // Bounce off edges
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+        // Keep particles in bounds
+        this.x = Math.max(0, Math.min(canvas.width, this.x));
+        this.y = Math.max(0, Math.min(canvas.height, this.y));
 
         // Enhanced pulsing effect
         this.pulsePhase += this.pulseSpeed;
-        this.opacity = 0.4 + Math.sin(this.pulsePhase) * 0.4;
+        this.opacity = 0.3 + Math.sin(this.pulsePhase) * 0.4;
       }
 
       draw() {
@@ -68,21 +70,22 @@ const AnimatedBackground: React.FC = () => {
         
         ctx.save();
         
-        // Create subtle glow effect for white background
+        // Create strong glow effect
         ctx.shadowColor = this.color;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 20;
         ctx.globalAlpha = this.opacity;
         
-        // Draw the main particle
+        // Draw the main particle with glow
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
         
-        // Add subtle glow ring
-        ctx.globalAlpha = this.opacity * 0.2;
+        // Add outer glow ring
+        ctx.globalAlpha = this.opacity * 0.3;
+        ctx.shadowBlur = 30;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size * 1.5, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
         ctx.fill();
         
         ctx.restore();
@@ -106,28 +109,29 @@ const AnimatedBackground: React.FC = () => {
     const animate = (time: number) => {
       if (!ctx || !canvas) return;
       
-      // Clear the canvas completely
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Clear with slight trail effect for smoother animation
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       particles.forEach(particle => {
         particle.update(time);
         particle.draw();
       });
 
-      // Draw connections with darker colors for white background
+      // Draw connections with enhanced visibility
       ctx.save();
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 2;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 150) {
-            const opacity = (150 - distance) / 150 * 0.3;
+          if (distance < 120) {
+            const opacity = (120 - distance) / 120 * 0.6;
             ctx.globalAlpha = opacity;
             
-            // Create gradient line with visible colors
+            // Create bright gradient line
             const gradient = ctx.createLinearGradient(
               particles[i].x, particles[i].y,
               particles[j].x, particles[j].y
@@ -136,6 +140,8 @@ const AnimatedBackground: React.FC = () => {
             gradient.addColorStop(1, particles[j].color);
             
             ctx.strokeStyle = gradient;
+            ctx.shadowColor = particles[i].color;
+            ctx.shadowBlur = 10;
             
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
@@ -166,11 +172,12 @@ const AnimatedBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 pointer-events-none w-full h-full"
+      className="fixed inset-0 pointer-events-none z-0"
       style={{ 
         display: 'block',
         width: '100vw',
-        height: '100vh'
+        height: '100vh',
+        background: 'transparent'
       }}
     />
   );

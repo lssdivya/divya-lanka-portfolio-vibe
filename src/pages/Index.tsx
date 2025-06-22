@@ -16,25 +16,31 @@ import ScrollProgressBar from '../components/ScrollProgressBar';
 export default function Index() {
   const [activeSection, setActiveSection] = useState('hero');
 
-  // Removed the useEffect that was adding 'dark' class globally
-
   return (
     <>
-      {/* Background layers */}
-      <AnimatedBackground />
-      <FloatingElements />
-      <ScrollProgressBar />
+      {/* Background layers - lowest z-index */}
+      <div className="fixed inset-0 z-0">
+        <AnimatedBackground />
+        <FloatingElements />
+      </div>
+      
+      {/* Progress bar */}
+      <div className="relative z-50">
+        <ScrollProgressBar />
+      </div>
 
-      {/* Main content - completely transparent wrapper */}
+      {/* Main content - higher z-index */}
       <motion.div
-        className="min-h-screen transition-colors duration-300 relative overflow-x-hidden z-10"
+        className="relative z-10 min-h-screen transition-colors duration-300 overflow-x-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        <div className="relative z-40">
+          <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
+        </div>
 
-        <main className="relative">
+        <main className="relative z-20">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -49,7 +55,9 @@ export default function Index() {
           </motion.div>
         </main>
 
-        <Footer />
+        <div className="relative z-20">
+          <Footer />
+        </div>
       </motion.div>
     </>
   );
