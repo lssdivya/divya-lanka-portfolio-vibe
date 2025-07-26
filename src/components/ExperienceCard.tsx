@@ -29,15 +29,15 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       className="relative md:ml-20"
     >
       {/* Timeline dot */}
-      <div className="absolute -left-6 top-6 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-gray-50 hidden md:block" />
+      <div className="absolute -left-6 top-6 w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full border-4 border-gray-50 hidden md:block" />
       
-      <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-xl shadow-purple-500/20">
+      <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-xl shadow-blue-500/20">
         <div className="flex justify-between items-start">
           <div className="flex-1">
             <h3 className="text-xl font-bold mb-2 text-gray-800">
               {experience.title}
             </h3>
-            <div className="text-lg font-semibold text-purple-600 mb-2">
+            <div className="text-lg font-semibold text-blue-600 mb-2">
               {experience.company}
             </div>
             <div className="flex flex-wrap gap-4 text-sm text-gray-600">
@@ -53,7 +53,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           </div>
           <button
             onClick={() => onToggle(index)}
-            className="text-pink-500 hover:text-pink-400 transition-colors p-2"
+            className="text-cyan-500 hover:text-cyan-400 transition-colors p-2"
           >
             <motion.div
               animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -68,7 +68,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           <ul className="space-y-2 text-gray-700">
             {experience.description.map((point, pointIndex) => (
               <li key={pointIndex} className="flex items-start gap-2">
-                <div className="w-1.5 h-1.5 bg-pink-500 rounded-full mt-2 flex-shrink-0" />
+                <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mt-2 flex-shrink-0" />
                 {point}
               </li>
             ))}
@@ -84,9 +84,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="mt-4 pt-4 border-t border-purple-500/30">
-                <h4 className="text-sm font-semibold text-purple-600 mb-2">
-                  <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <div className="mt-4 pt-4 border-t border-blue-500/30">
+                <h4 className="text-sm font-semibold text-blue-600 mb-2">
+                  <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
                     Key Achievements:
                   </span>
                 </h4>
@@ -99,7 +99,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
                       transition={{ delay: detailIndex * 0.1 }}
                       className="flex items-start gap-2 text-gray-700"
                     >
-                      <div className="w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-2 flex-shrink-0" />
+                      <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mt-2 flex-shrink-0" />
                       {detail}
                     </motion.li>
                   ))}

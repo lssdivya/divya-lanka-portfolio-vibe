@@ -18,31 +18,49 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
 
   const projects = [
     {
-      title: 'Darknet Traffic Detection (LSTM)',
-      description: 'Improved IoT security by classifying malicious network patterns using advanced LSTM neural networks.',
-      details: 'Enhanced prediction accuracy by 20% using LSTM neural networks',
-      github: '#',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&h=400',
-      gradient: 'from-purple-600 to-pink-500',
-      tech: ['Python', 'TensorFlow', 'LSTM', 'Cybersecurity'],
+      title: 'Depression Risk Analyzer',
+      description: 'Machine Learning web app to predict depression risk using non-clinical survey data. Built with Python, Flask, Docker, and XGBoost. Deployed on AWS.',
+      details: 'ML-powered depression risk assessment with XGBoost algorithm',
+      github: 'https://github.com/lssdivya/DepressionRiskAnalyzer',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&h=400',
+      gradient: 'from-blue-600 to-cyan-500',
+      tech: ['Python', 'Flask', 'XGBoost', 'Docker', 'AWS'],
     },
     {
-      title: 'Computer Vision Icon Matching',
-      description: 'Automated PDF analysis with OpenCV reducing manual work by 80% through intelligent icon detection.',
-      details: 'Ensured 95%+ accuracy in icon detection for document automation',
-      github: '#',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&h=400',
-      gradient: 'from-[#5B21B6] to-[#DB2777]',
-      tech: ['Python', 'OpenCV', 'Computer Vision', 'PDF Processing'],
+      title: 'Research Paper Summarizer',
+      description: 'This project leverages OpenAI\'s GPT API to automatically extract, summarize, and simplify academic research papers. Upload a PDF, extract the content, and receive a concise summary.',
+      details: 'AI-powered research paper analysis and summarization',
+      github: 'https://github.com/lssdivya/Research_Paper_Summarizer',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=600&h=400',
+      gradient: 'from-blue-600 to-cyan-500',
+      tech: ['Python', 'OpenAI GPT', 'PDF Processing', 'NLP'],
     },
     {
-      title: 'YouTube Stats Analyzer',
-      description: 'Provided deep analytics of global YouTube trends, earnings, and demographics using advanced data visualization.',
-      details: 'Delivered insights using Python and data visualization libraries',
-      github: '#',
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&h=400',
-      gradient: 'from-[#5B21B6] to-[#DB2777]',
-      tech: ['Python', 'Data Analytics', 'Visualization', 'APIs'],
+      title: 'Marketing Sales Dashboard',
+      description: 'An Interactive Power BI dashboard for Sales & Marketing analytics, Visualizes KPIs, trends, and actionable insights for business decision-makers.',
+      details: 'Comprehensive business intelligence dashboard with KPI tracking',
+      github: 'https://github.com/lssdivya/Marketing-Sales-Dashboard',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=400',
+      gradient: 'from-blue-600 to-cyan-500',
+      tech: ['Power BI', 'Data Visualization', 'Business Intelligence', 'Analytics'],
+    },
+    {
+      title: 'Clinical Decision Making and Pattern Recognition',
+      description: 'Built an intelligent Streamlit application empowering healthcare professionals to visualize complex patient data, uncover hidden patterns, and make faster, data-driven clinical decisions.',
+      details: 'Healthcare data visualization and pattern recognition system',
+      github: 'https://github.com/lssdivya/Clinical_Decision_Making_and_Pattern_Recognition',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=600&h=400',
+      gradient: 'from-blue-600 to-cyan-500',
+      tech: ['Python', 'Streamlit', 'Healthcare Analytics', 'Data Visualization'],
+    },
+    {
+      title: 'ATS Checker',
+      description: 'A Streamlit-powered web application that simulates how real Applicant Tracking Systems analyze resumes. Users can upload a resume and job description for instant evaluation.',
+      details: 'Resume optimization tool with ATS simulation capabilities',
+      github: 'https://github.com/lssdivya/ATS',
+      image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&h=400',
+      gradient: 'from-blue-600 to-cyan-500',
+      tech: ['Python', 'Streamlit', 'NLP', 'Resume Analysis'],
     },
   ];
 
@@ -56,7 +74,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
               Featured Projects
             </span>
           </h2>
@@ -70,7 +88,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ y: -10, scale: 1.05 }}
-              className="group bg-white backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-purple-500/20 border border-gray-200 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300"
+              className="group bg-white backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-blue-500/20 border border-gray-200 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -78,11 +96,11 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                   alt={project.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-pink-500/30 group-hover:opacity-50 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-cyan-500/30 group-hover:opacity-50 transition-opacity duration-300" />
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-bold text-purple-600 mb-3">
+                <h3 className="text-xl font-bold text-blue-600 mb-3">
                   {project.title}
                 </h3>
                 
@@ -98,7 +116,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-1 bg-purple-600 text-white text-xs rounded-md font-medium"
+                      className="px-2 py-1 bg-blue-600 text-white text-xs rounded-md font-medium"
                     >
                       {tech}
                     </span>
@@ -112,7 +130,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-pink-500 text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-pink-500/40 transition-shadow duration-200"
+                    className="flex items-center gap-2 px-4 py-2 bg-cyan-500 text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-cyan-500/40 transition-shadow duration-200"
                   >
                     <Github size={16} />
                     GitHub
@@ -124,7 +142,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 border-2 border-pink-500 text-pink-500 rounded-lg font-semibold text-sm hover:bg-pink-500 hover:text-white transition-colors duration-200"
+                    className="flex items-center gap-2 px-4 py-2 border-2 border-cyan-500 text-cyan-500 rounded-lg font-semibold text-sm hover:bg-cyan-500 hover:text-white transition-colors duration-200"
                   >
                     <ExternalLink size={16} />
                     Demo

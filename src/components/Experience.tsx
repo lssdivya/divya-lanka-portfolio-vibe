@@ -40,14 +40,14 @@ const Experience: React.FC<ExperienceProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
               Work Experience
             </span>
           </h2>
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500 hidden md:block" />
+          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-cyan-500 hidden md:block" />
           
           <div className="space-y-8">
             {experiences.map((exp, index) => (
