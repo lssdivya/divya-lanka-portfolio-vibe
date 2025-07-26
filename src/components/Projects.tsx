@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Github, ExternalLink } from 'lucide-react';
 
 interface ProjectsProps {
   setActiveSection: (section: string) => void;
@@ -82,13 +81,16 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.a
               key={project.title}
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ y: -10, scale: 1.05 }}
-              className="group bg-white backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-blue-500/20 border border-gray-200 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300"
+              className="group bg-white backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg shadow-blue-500/20 border border-gray-200 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 cursor-pointer"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -122,34 +124,8 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                     </span>
                   ))}
                 </div>
-                
-                <div className="flex gap-3">
-                  <motion.a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-cyan-500 text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-cyan-500/40 transition-shadow duration-200"
-                  >
-                    <Github size={16} />
-                    GitHub
-                  </motion.a>
-                  
-                  <motion.a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 border-2 border-cyan-500 text-cyan-500 rounded-lg font-semibold text-sm hover:bg-cyan-500 hover:text-white transition-colors duration-200"
-                  >
-                    <ExternalLink size={16} />
-                    Demo
-                  </motion.a>
-                </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
