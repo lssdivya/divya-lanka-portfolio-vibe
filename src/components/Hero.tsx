@@ -19,10 +19,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
 
   const roles = [
     'Developer',
-    'Data Scientist',
-    'Data Engineer', 
-    'Software Developer',
-    'AI/ML Engineer'
+    'Data Scientist'
   ];
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -124,10 +121,10 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed px-4"
+            className="text-lg sm:text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed px-4"
           >
             <div className="flex items-center justify-center">
-              <span className="text-gray-300">I'm a </span>
+              <span className="text-white font-medium">I'm a </span>
               <div className="relative ml-2 flex items-center">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -141,7 +138,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                       damping: 20,
                       duration: 0.4
                     }}
-                    className="text-gray-300 font-semibold whitespace-nowrap bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
+                    className="font-bold whitespace-nowrap bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent text-xl sm:text-2xl md:text-3xl"
                   >
                     {roles[currentRoleIndex]}
                   </motion.span>
@@ -166,13 +163,14 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.8 + index * 0.1 }}
                 whileHover={{ 
-                  scale: 1.2, 
-                  rotate: 5,
-                  boxShadow: "0 10px 25px rgba(59, 130, 246, 0.6)",
-                  backgroundColor: "rgba(59, 130, 246, 0.9)"
+                  scale: 1.3, 
+                  rotate: 10,
+                  boxShadow: "0 15px 35px rgba(59, 130, 246, 0.8)",
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
+                  borderColor: "rgba(255, 255, 255, 0.4)"
                 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
+                className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg border-2 border-transparent transition-all duration-300"
               >
                 <motion.div
                   animate={{ rotate: [0, 5, -5, 0] }}
@@ -196,31 +194,32 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
           >
             <motion.button
               whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 15px 30px rgba(6, 182, 212, 0.4)",
-                backgroundColor: "rgba(6, 182, 212, 0.9)"
+                scale: 1.1,
+                boxShadow: "0 20px 40px rgba(6, 182, 212, 0.6)",
+                y: -5
               }}
-              whileTap={{ scale: 0.98 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveSection('contact')}
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0 px-8 py-3 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 px-8 py-4 text-lg font-semibold rounded-lg shadow-xl transition-all duration-300"
             >
               Let's Connect
             </motion.button>
             <motion.button 
               whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 15px 30px rgba(6, 182, 212, 0.3)",
-                borderColor: "rgba(6, 182, 212, 0.8)",
-                backgroundColor: "rgba(6, 182, 212, 0.1)"
+                scale: 1.1,
+                boxShadow: "0 20px 40px rgba(6, 182, 212, 0.4)",
+                backgroundColor: "rgba(6, 182, 212, 0.2)",
+                borderColor: "rgba(6, 182, 212, 1)",
+                y: -5
               }}
-              whileTap={{ scale: 0.98 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => {
                 const link = document.createElement('a');
                 link.href = '/resume.pdf';
                 link.download = 'Sai_Divya_Lanka_Resume.pdf';
                 link.click();
               }}
-              className="border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300"
+              className="border-2 border-cyan-400 text-cyan-300 hover:text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-xl bg-transparent transition-all duration-300"
             >
               Download Resume
             </motion.button>
