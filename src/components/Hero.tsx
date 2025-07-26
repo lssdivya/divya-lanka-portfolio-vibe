@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { Button } from './ui/button';
 
 interface HeroProps {
   setActiveSection: (section: string) => void;
@@ -185,26 +186,33 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             ))}
           </motion.div>
 
-          <motion.button
+          <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            onClick={scrollToAbout}
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 20px 40px rgba(59, 130, 246, 0.6)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-blue-500/50 transition-all duration-300 mb-16 relative overflow-hidden"
+            className="flex gap-4 justify-center mb-16"
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500"
-              initial={{ x: '-100%' }}
-              whileHover={{ x: '100%' }}
-              transition={{ duration: 0.6 }}
-            />
-            <span className="relative z-10">See My Work</span>
-          </motion.button>
+            <Button 
+              onClick={() => setActiveSection('contact')}
+              size="lg"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0 px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              Let's Connect
+            </Button>
+            <Button 
+              onClick={() => {
+                const link = document.createElement('a');
+                link.href = '/resume.pdf'; // You'll need to add your resume PDF to the public folder
+                link.download = 'Sai_Divya_Lanka_Resume.pdf';
+                link.click();
+              }}
+              variant="outline"
+              size="lg"
+              className="border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-500 hover:text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              Download Resume
+            </Button>
+          </motion.div>
 
           <motion.div
             animate={{ y: [0, 10, 0] }}
