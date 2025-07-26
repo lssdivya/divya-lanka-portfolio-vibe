@@ -22,7 +22,7 @@ export default function Achievements({ setActiveSection }: AchievementsProps) {
   const achievements = [
     {
       icon: <BookOpen className="w-8 h-8" />,
-      number: "4+",
+      number: "3+",
       label: "Years",
       subtitle: "Experience",
       color: "from-cyan-500 to-blue-600"

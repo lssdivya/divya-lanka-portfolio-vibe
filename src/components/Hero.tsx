@@ -92,15 +92,20 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
           >
           </motion.div>
 
-          <motion.h1
+          <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
+            className="mb-6"
           >
-            <span className="text-gray-200 mr-4">Hey 👋, I'm</span>
-            <motion.span 
-              className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent"
+            {/* First line: Hey 👋, I'm */}
+            <motion.h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4">
+              Hey 👋, I'm
+            </motion.h1>
+            
+            {/* Second line: Name */}
+            <motion.h2 
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent"
               animate={{
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}
@@ -114,8 +119,8 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
               }}
             >
               Sai Divya Lanka
-            </motion.span>
-          </motion.h1>
+            </motion.h2>
+          </motion.div>
 
           <motion.div
             initial={{ y: 30, opacity: 0 }}
@@ -166,8 +171,9 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                   scale: 1.3, 
                   rotate: 10,
                   boxShadow: "0 15px 35px rgba(59, 130, 246, 0.8)",
-                  backgroundColor: "rgba(255, 255, 255, 0.2)",
-                  borderColor: "rgba(255, 255, 255, 0.4)"
+                  backgroundColor: "rgba(255, 255, 255, 0.3)",
+                  borderColor: "rgba(255, 255, 255, 0.6)",
+                  transition: { duration: 0.1, ease: "easeOut" }
                 }}
                 whileTap={{ scale: 0.9 }}
                 className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg border-2 border-transparent transition-all duration-300"
