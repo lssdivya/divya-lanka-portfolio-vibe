@@ -232,8 +232,9 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
               whileTap={{ scale: 0.95 }}
               onClick={() => {
                 const link = document.createElement('a');
-                link.href = '/resume.pdf';
+                link.href = 'https://drive.google.com/uc?export=download&id=1b_Y4U7TXlEHf9oNUmTxHwyVvyWcJTyG9';
                 link.download = 'Sai_Divya_Lanka_Resume.pdf';
+                link.target = '_blank';
                 link.click();
               }}
               className="border-2 border-cyan-400 text-cyan-300 hover:text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-xl bg-transparent transition-all duration-300"
