@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Award, BookOpen, Users, Coffee } from 'lucide-react';
+import AnimatedCounter from './AnimatedCounter';
 
 interface AchievementsProps {
   setActiveSection: (section: string) => void;
@@ -22,14 +23,16 @@ export default function Achievements({ setActiveSection }: AchievementsProps) {
   const achievements = [
     {
       icon: <BookOpen className="w-8 h-8" />,
-      number: "3+",
+      number: 3,
+      suffix: "+",
       label: "Years",
       subtitle: "Experience",
       color: "from-cyan-500 to-blue-600"
     },
     {
       icon: <Award className="w-8 h-8" />,
-      number: "48",
+      number: 48,
+      suffix: "",
       label: "Projects",
       subtitle: "Delivered",
       subtext: "Still counting...",
@@ -37,14 +40,16 @@ export default function Achievements({ setActiveSection }: AchievementsProps) {
     },
     {
       icon: <Users className="w-8 h-8" />,
-      number: "100K+",
+      number: 100,
+      suffix: "K+",
       label: "Users Served",
       subtitle: "",
       color: "from-cyan-400 to-blue-500"
     },
     {
       icon: <Coffee className="w-8 h-8" />,
-      number: "1000?",
+      number: 1000,
+      suffix: "?",
       label: "Cups of Coffee",
       subtitle: "Not sure though,",
       subtext: "haha",
@@ -106,7 +111,12 @@ export default function Achievements({ setActiveSection }: AchievementsProps) {
                   animate={inView ? { scale: 1 } : { scale: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
                 >
-                  {achievement.number}
+                  <AnimatedCounter 
+                    end={achievement.number} 
+                    suffix={achievement.suffix}
+                    isInView={inView}
+                    duration={2000}
+                  />
                 </motion.h3>
                 <p className="text-lg font-semibold text-blue-600 mb-1">{achievement.label}</p>
                 {achievement.subtitle && (

@@ -18,7 +18,10 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView) {
+      setCount(0);
+      return;
+    }
 
     let startTime: number;
     let animationFrame: number;
