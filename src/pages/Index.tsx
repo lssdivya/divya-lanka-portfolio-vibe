@@ -8,7 +8,7 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import VantaBirdsBackground from '../components/VantaBirdsBackground';
+import AnimatedBackground from '../components/AnimatedBackground';
 import ScrollProgressBar from '../components/ScrollProgressBar';
 
 export default function Index() {
@@ -16,8 +16,8 @@ export default function Index() {
 
   return (
     <>
-      {/* Vanta Birds background - always show on home page */}
-      <VantaBirdsBackground />
+      {/* Animated background - consistent throughout website */}
+      <AnimatedBackground />
       
       {/* Progress bar */}
       <div className="relative z-50">
