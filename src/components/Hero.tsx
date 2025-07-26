@@ -165,7 +165,13 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
+                animate={{ 
+                  scale: 1,
+                  rotate: 0,
+                  boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
+                  backgroundColor: "transparent",
+                  borderColor: "transparent"
+                }}
                 transition={{ delay: 0.8 + index * 0.1 }}
                 whileHover={{ 
                   scale: 1.3, 
@@ -173,10 +179,10 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                   boxShadow: "0 15px 35px rgba(59, 130, 246, 0.8)",
                   backgroundColor: "rgba(255, 255, 255, 0.3)",
                   borderColor: "rgba(255, 255, 255, 0.6)",
-                  transition: { duration: 0.1, ease: "easeOut" }
+                  transition: { duration: 0.15, ease: "easeOut" }
                 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg border-2 border-transparent transition-all duration-300"
+                className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg border-2 border-transparent"
               >
                 <motion.div
                   animate={{ rotate: [0, 5, -5, 0] }}
