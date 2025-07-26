@@ -211,7 +211,12 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 y: -5
               }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveSection('contact')}
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 px-8 py-4 text-lg font-semibold rounded-lg shadow-xl transition-all duration-300"
             >
               Let's Connect

@@ -19,7 +19,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
   });
 
   return (
-    <section id="contact" ref={ref} className="py-20 relative overflow-hidden bg-gray-50">
+    <section id="contact" ref={ref} className="py-20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
