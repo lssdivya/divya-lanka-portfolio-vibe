@@ -51,7 +51,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
               transition={{ duration: 0.8 }}
               className="text-5xl font-bold mb-6 lg:mb-8"
             >
-              <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
                 About Me
               </span>
             </motion.h2>
@@ -60,7 +60,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-40 h-40 lg:w-48 lg:h-48 rounded-full bg-purple-100 flex items-center justify-center p-2"
+              className="w-40 h-40 lg:w-48 lg:h-48 rounded-full bg-blue-100 flex items-center justify-center p-2"
             >
               <img 
                 src="/lovable-uploads/4a1fa786-49a1-40b8-a511-5302052843a2.png" 
@@ -105,13 +105,13 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
             <motion.div
               key={index}
               whileHover={{ scale: 1.05 }}
-              className="text-center bg-white backdrop-blur-sm rounded-2xl p-6 border border-purple-200 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300"
+              className="text-center bg-white backdrop-blur-sm rounded-2xl p-6 border border-blue-200 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300"
             >
-              <div className="text-3xl md:text-4xl font-bold text-pink-500 mb-2 flex items-center justify-center gap-2">
+              <div className="text-3xl md:text-4xl font-bold text-cyan-500 mb-2 flex items-center justify-center gap-2">
                 <AnimatedCounter end={stat.end} suffix={stat.suffix} isInView={statsInView} />
-                {stat.icon && <stat.icon size={32} className="text-pink-500" />}
+                {stat.icon && <stat.icon size={32} className="text-cyan-500" />}
               </div>
-              <div className="text-purple-600 font-medium">
+              <div className="text-blue-600 font-medium">
                 {stat.label}
                 {stat.note && <div className="text-xs text-gray-500 mt-1">{stat.note}</div>}
                 {index === 1 && <div className="text-xs text-gray-500 mt-1">Still counting...</div>}
@@ -128,7 +128,7 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
           className="mt-12"
         >
           <h3 className="text-2xl font-bold text-center mb-8">
-            <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
               Key Achievements
             </span>
           </h3>
@@ -141,13 +141,13 @@ const About: React.FC<AboutProps> = ({ setActiveSection, darkMode = false }) => 
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-2xl p-6 border border-purple-200 text-center shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300"
+                className="bg-white rounded-2xl p-6 border border-blue-200 text-center shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Award size={24} className="text-white" />
                 </div>
-                <div className="font-semibold text-pink-500 mb-2">{achievement.title}</div>
-                <div className="text-purple-600 text-sm">{achievement.subtitle}</div>
+                <div className="font-semibold text-cyan-500 mb-2">{achievement.title}</div>
+                <div className="text-blue-600 text-sm">{achievement.subtitle}</div>
               </motion.div>
             ))}
           </div>

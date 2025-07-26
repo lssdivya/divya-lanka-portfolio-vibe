@@ -28,7 +28,7 @@ const Contact: React.FC<ContactProps> = ({ setActiveSection }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
               Want to work together on building some cool stuff?
             </span>
           </h2>

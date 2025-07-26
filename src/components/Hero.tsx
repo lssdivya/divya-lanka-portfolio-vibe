@@ -91,37 +91,6 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="mb-8"
           >
-            <motion.div 
-              className="relative mt-16 w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 p-1 shadow-2xl shadow-blue-500/50 transform translate-y-8"
-              whileHover={{ 
-                scale: 1.1,
-                boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.8)"
-              }}
-              animate={{
-                boxShadow: [
-                  "0 20px 25px -5px rgba(59, 130, 246, 0.5)",
-                  "0 25px 50px -12px rgba(6, 182, 212, 0.5)",
-                  "0 20px 25px -5px rgba(59, 130, 246, 0.5)"
-                ]
-              }}
-              transition={{
-                boxShadow: {
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }
-              }}
-            >
-              <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
-                <motion.img
-                  src="/lovable-uploads/55fc955c-5023-4d3d-ba13-8d30a1ef83c1.png"
-                  alt="Sai Divya Lanka"
-                  className="w-full h-full rounded-full object-cover object-center"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.h1
@@ -145,7 +114,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 backgroundSize: '200% 200%'
               }}
             >
-              Madhavi Kathula
+              Sai Divya Lanka
             </motion.span>
           </motion.h1>
 

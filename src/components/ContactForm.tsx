@@ -46,10 +46,10 @@ const ContactForm: React.FC = () => {
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="bg-white backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-purple-500/20 border border-gray-200 hover:shadow-purple-500/40 transition-all duration-300"
+      className="bg-white backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-blue-500/20 border border-gray-200 hover:shadow-blue-500/40 transition-all duration-300"
     >
       <h3 className="text-2xl font-bold mb-6">
-        <span className="bg-gradient-to-br from-purple-500 to-pink-500 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text text-transparent">
           Send me a message
         </span>
       </h3>
@@ -66,7 +66,7 @@ const ContactForm: React.FC = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors duration-200 placeholder-gray-400"
+            className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-400"
             placeholder="Your name"
           />
         </div>
@@ -82,7 +82,7 @@ const ContactForm: React.FC = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors duration-200 placeholder-gray-400"
+            className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-400"
             placeholder="your.email@example.com"
           />
         </div>
@@ -98,7 +98,7 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors duration-200 resize-none placeholder-gray-400"
+            className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none placeholder-gray-400"
             placeholder="Tell me about your project or just say hello!"
           />
         </div>
@@ -108,7 +108,7 @@ const ContactForm: React.FC = () => {
           disabled={isSubmitting}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="w-full bg-gradient-to-r from-purple-600 to-purple-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-purple-500/40 transition-shadow duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-500/40 transition-shadow duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <motion.div

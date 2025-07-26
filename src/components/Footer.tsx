@@ -23,7 +23,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-100 border-t border-purple-200 py-12 relative z-10">
+    <footer className="bg-gray-100 border-t border-blue-200 py-12 relative z-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center space-y-8">
           <motion.div
@@ -32,7 +32,7 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h3 className="text-2xl font-bold bg-gradient-to-br from-purple-600 to-purple-500 bg-clip-text text-transparent mb-4">
+            <h3 className="text-2xl font-bold bg-gradient-to-br from-blue-600 to-blue-500 bg-clip-text text-transparent mb-4">
               Sai Divya Lanka
             </h3>
             <p className="text-gray-600 max-w-md">
@@ -54,7 +54,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white shadow-md hover:shadow-lg hover:shadow-pink-500/40 transition-shadow duration-300"
+                className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center text-white shadow-md hover:shadow-lg hover:shadow-cyan-500/40 transition-shadow duration-300"
               >
                 <social.icon size={18} />
               </motion.a>
@@ -65,10 +65,10 @@ const Footer = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="border-t border-purple-200 pt-8 text-center"
+            className="border-t border-blue-200 pt-8 text-center"
           >
             <p className="text-gray-600 text-sm flex items-center justify-center gap-2">
-              Made with <Heart size={16} className="text-pink-500" /> by Sai Divya Lanka
+              Made with <Heart size={16} className="text-cyan-500" /> by Sai Divya Lanka
             </p>
             <p className="text-gray-400 text-xs mt-2">
               © 2024 All rights reserved.
