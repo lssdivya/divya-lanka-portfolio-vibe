@@ -168,21 +168,21 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 animate={{ 
                   scale: 1,
                   rotate: 0,
-                  boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
-                  backgroundColor: "transparent",
-                  borderColor: "transparent"
+                  boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)"
                 }}
-                transition={{ delay: 0.8 + index * 0.1 }}
+                transition={{ 
+                  delay: 0.8 + index * 0.1,
+                  duration: 0.2,
+                  ease: "easeOut"
+                }}
                 whileHover={{ 
                   scale: 1.3, 
                   rotate: 10,
                   boxShadow: "0 15px 35px rgba(59, 130, 246, 0.8)",
-                  backgroundColor: "rgba(255, 255, 255, 0.3)",
-                  borderColor: "rgba(255, 255, 255, 0.6)",
-                  transition: { duration: 0.15, ease: "easeOut" }
+                  transition: { duration: 0.2, ease: "easeOut" }
                 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg border-2 border-transparent"
+                className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg"
               >
                 <motion.div
                   animate={{ rotate: [0, 5, -5, 0] }}
