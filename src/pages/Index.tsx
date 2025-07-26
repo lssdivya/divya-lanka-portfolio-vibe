@@ -8,7 +8,7 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import AnimatedBackground from '../components/AnimatedBackground';
+import VantaNetBackground from '../components/VantaNetBackground';
 import ScrollProgressBar from '../components/ScrollProgressBar';
 
 export default function Index() {
@@ -16,8 +16,8 @@ export default function Index() {
 
   return (
     <>
-      {/* Animated background - consistent throughout website */}
-      <AnimatedBackground />
+      {/* Professional subtle background */}
+      <VantaNetBackground />
       
       {/* Progress bar */}
       <div className="relative z-50">

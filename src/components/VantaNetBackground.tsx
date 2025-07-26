@@ -22,12 +22,12 @@ const VantaNetBackground: React.FC<VantaNetBackgroundProps> = ({ className = "" 
           minWidth: 200.00,
           scale: 1.00,
           scaleMobile: 1.00,
-          color: 0xff3f81,
-          backgroundColor: 0x23153c,
-          points: 10,
-          maxDistance: 20,
-          spacing: 15,
-          showDots: true
+          color: 0x3b82f6,
+          backgroundColor: 0xffffff,
+          points: 8,
+          maxDistance: 25,
+          spacing: 20,
+          showDots: false
         });
       }).catch(console.error);
     }
