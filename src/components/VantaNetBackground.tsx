@@ -23,7 +23,7 @@ const VantaNetBackground: React.FC<VantaNetBackgroundProps> = ({ className = "" 
           scale: 1.00,
           scaleMobile: 1.00,
           color: 0x3b82f6,
-          backgroundColor: 0xffffff,
+          backgroundColor: 0x0f1419,
           points: 8,
           maxDistance: 25,
           spacing: 20,
