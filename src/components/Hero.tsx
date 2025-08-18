@@ -202,7 +202,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex gap-4 justify-center mb-16"
+            className="flex justify-center mb-16"
           >
             <motion.button
               whileHover={{ 
@@ -220,22 +220,6 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 px-8 py-4 text-lg font-semibold rounded-lg shadow-xl transition-all duration-300"
             >
               Let's Connect
-            </motion.button>
-            <motion.button 
-              whileHover={{ 
-                scale: 1.1,
-                boxShadow: "0 20px 40px rgba(6, 182, 212, 0.4)",
-                backgroundColor: "rgba(6, 182, 212, 0.2)",
-                borderColor: "rgba(6, 182, 212, 1)",
-                y: -5
-              }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                window.open('https://drive.google.com/file/d/1b_Y4U7TXlEHf9oNUmTxHwyVvyWcJTyG9/view?usp=drive_link', '_blank');
-              }}
-              className="border-2 border-cyan-400 text-cyan-300 hover:text-white px-8 py-4 text-lg font-semibold rounded-lg shadow-xl bg-transparent transition-all duration-300"
-            >
-              Download Resume
             </motion.button>
           </motion.div>
 
