@@ -16,6 +16,24 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
 
   const projects = [
     {
+      title: 'Detecting AI Generated Text',
+      description: 'Detect AI-generated text using BERT embeddings, linguistic features, vector similarity, and statistical scoring, with an interactive Streamlit interface.',
+      details: 'AI detection system with BERT embeddings and statistical analysis',
+      github: 'https://github.com/lssdivya/detect_ai_generated_text',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&h=400',
+      gradient: 'from-blue-600 to-cyan-500',
+      tech: ['Python', 'BERT', 'Streamlit', 'NLP', 'Vector Similarity'],
+    },
+    {
+      title: 'F1 Race Prediction',
+      description: 'End to end F1 race outcome prediction and BI platform with Ergast ingestion, dbt feature marts, XGBoost models, and Power BI/Tableau dashboards.',
+      details: 'Complete F1 prediction platform with machine learning and BI analytics',
+      github: 'https://github.com/lssdivya/f1-predictor-bi',
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&h=400',
+      gradient: 'from-blue-600 to-cyan-500',
+      tech: ['Python', 'XGBoost', 'dbt', 'Power BI', 'Tableau', 'Data Engineering'],
+    },
+    {
       title: 'Depression Risk Analyzer',
       description: 'Machine Learning web app to predict depression risk using non-clinical survey data. Built with Python, Flask, Docker, and XGBoost. Deployed on AWS.',
       details: 'ML-powered depression risk assessment with XGBoost algorithm',
