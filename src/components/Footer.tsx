@@ -33,7 +33,7 @@ const Footer = () => {
             className="text-center"
           >
             <h3 className="text-2xl font-bold bg-gradient-to-br from-blue-600 to-blue-500 bg-clip-text text-transparent mb-4">
-              Sai Divya Lanka
+              Divya Lanka
             </h3>
             <p className="text-gray-300 max-w-md">
               Transforming data into insights, building scalable solutions, and bridging the gap between technology and innovation.
@@ -68,7 +68,7 @@ const Footer = () => {
             className="border-t border-blue-200/30 pt-8 text-center"
           >
             <p className="text-gray-300 text-sm flex items-center justify-center gap-2">
-              Made with <Heart size={16} className="text-cyan-500" /> by Sai Divya Lanka
+              Made with <Heart size={16} className="text-cyan-500" /> by Divya Lanka
             </p>
             <p className="text-gray-500 text-xs mt-2">
               © 2024 All rights reserved.

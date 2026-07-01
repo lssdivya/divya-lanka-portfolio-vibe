@@ -23,7 +23,7 @@ export default function Achievements({ setActiveSection }: AchievementsProps) {
   const achievements = [
     {
       icon: <BookOpen className="w-8 h-8" />,
-      number: 3,
+      number: 5,
       suffix: "+",
       label: "Years",
       subtitle: "Experience",
@@ -31,7 +31,7 @@ export default function Achievements({ setActiveSection }: AchievementsProps) {
     },
     {
       icon: <Award className="w-8 h-8" />,
-      number: 48,
+      number: 87,
       suffix: "",
       label: "Projects",
       subtitle: "Delivered",
@@ -61,13 +61,13 @@ export default function Achievements({ setActiveSection }: AchievementsProps) {
     {
       icon: <Award className="w-8 h-8" />,
       title: "Leadership",
-      description: "Software Development Club Lead",
+      description: "Girls who Code Club Lead, AI ML Club Founder at UNCC",
       color: "from-cyan-500 to-blue-600"
     },
     {
       icon: <BookOpen className="w-8 h-8" />,
       title: "Teaching",
-      description: "Graduate Teaching Assistant for Database Systems",
+      description: "Graduate Teaching Assistant for Applied Machine Learning, Database Systems Design",
       color: "from-blue-500 to-cyan-600"
     },
     {

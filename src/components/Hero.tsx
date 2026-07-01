@@ -123,7 +123,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
                 backgroundSize: '200% 200%'
               }}
             >
-              Sai Divya Lanka
+              Divya Lanka
             </motion.h2>
           </motion.div>
 

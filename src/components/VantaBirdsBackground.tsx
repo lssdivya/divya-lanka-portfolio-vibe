@@ -10,7 +10,7 @@ const VantaBirdsBackground: React.FC<VantaBirdsBackgroundProps> = ({ className =
   const vantaEffect = useRef<any>(null);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     let initAttempts = 0;
     const maxAttempts = 20;
     
