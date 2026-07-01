@@ -131,31 +131,9 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg sm:text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed px-4"
-          >
-            <div className="flex items-center justify-center">
-              <span className="text-white font-medium">I'm a </span>
-              <div className="relative ml-2 flex items-center">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={currentRoleIndex}
-                    initial={{ y: -30, opacity: 0, rotateX: -90 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    exit={{ y: 30, opacity: 0, rotateX: 90 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 500,
-                      damping: 20,
-                      duration: 0.4
-                    }}
-                    className="font-bold whitespace-nowrap bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent text-xl sm:text-2xl md:text-3xl"
-                  >
-                    {roles[currentRoleIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </div>
-            </div>
-          </motion.div>
+            className="mb-8"
+          />
+
 
           <motion.div
             initial={{ y: 30, opacity: 0 }}
