@@ -90,7 +90,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
   ];
 
   return (
-    <section id="projects" ref={ref} className="py-20 relative overflow-hidden">
+    <section id="projects" ref={ref} className="py-20 scroll-mt-24 relative overflow-visible min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -132,7 +132,7 @@ const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-3 line-clamp-3">
+                <p className="text-gray-300 mb-3 line-clamp-3">
                   {project.description}
                 </p>
                 
