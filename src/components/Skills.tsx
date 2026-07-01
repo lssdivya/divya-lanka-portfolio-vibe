@@ -1,36 +1,20 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  FaReact, 
-  FaJs, 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaPython, 
-  FaJava, 
-  FaDatabase, 
-  FaAws, 
-  FaDocker, 
+import {
+  FaPython,
+  FaJava,
+  FaAws,
+  FaDocker,
   FaGitAlt,
-  FaCogs,
-  FaTerminal,
-  FaMicrosoft
+  FaMicrosoft,
+  FaCode,
+  FaBrain,
+  FaDatabase,
+  FaServer,
+  FaCloud,
+  FaChartLine,
 } from 'react-icons/fa';
-import { 
-  SiTypescript, 
-  SiNodedotjs, 
-  SiPostgresql, 
-  SiApacheairflow, 
-  SiGooglebigquery, 
-  SiMongodb, 
-  SiKubernetes, 
-  SiPandas, 
-  SiNumpy, 
-  SiScikitlearn, 
-  SiTensorflow, 
-  SiPytorch 
-} from 'react-icons/si';
 
 interface SkillsProps {
   setActiveSection: (section: string) => void;
@@ -38,7 +22,7 @@ interface SkillsProps {
 
 const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
+    threshold: 0.2,
     onChange: (inView) => {
       if (inView) setActiveSection('skills');
     },
@@ -46,66 +30,67 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
 
   const skillGroups = [
     {
-      title: 'Frontend',
-      skills: [
-        { name: 'React.js', icon: FaReact },
-        { name: 'JavaScript', icon: FaJs },
-        { name: 'TypeScript', icon: SiTypescript },
-        { name: 'HTML5', icon: FaHtml5 },
-        { name: 'CSS3', icon: FaCss3Alt }
-      ],
-      headerIcon: FaReact,
-      skillColor: 'bg-blue-500',
+      title: 'Programming Languages',
+      skills: ['Python', 'Java', 'SQL', 'TypeScript', 'Bash'],
+      headerIcon: FaCode,
     },
     {
-      title: 'Backend',
+      title: 'Artificial Intelligence & Machine Learning',
       skills: [
-        { name: 'Python', icon: FaPython },
-        { name: 'Java', icon: FaJava },
-        { name: 'C/C++', icon: FaCogs },
-        { name: 'Node.js', icon: SiNodedotjs },
-        { name: 'Shell Scripting', icon: FaTerminal }
+        'PyTorch', 'TensorFlow', 'Scikit-learn', 'LLMs', 'RAG', 'AI Agents',
+        'Multi-Agent Systems', 'Agent Orchestration', 'LangGraph', 'MCP',
+        'Function Calling', 'Prompt Engineering', 'LLM Evaluation',
+        'LLM-as-a-Judge', 'Hallucination Detection', 'Semantic Search',
+        'Embeddings', 'Semantic Chunking', 'Reranking', 'Vector Search',
+        'Fine-tuning', 'RLHF', 'Synthetic Data Generation',
       ],
-      headerIcon: FaPython,
-      skillColor: 'bg-blue-600',
+      headerIcon: FaBrain,
     },
     {
-      title: 'Data Engineering & Databases',
+      title: 'Data Engineering & Storage',
       skills: [
-        { name: 'SQL', icon: FaDatabase },
-        { name: 'PostgreSQL', icon: SiPostgresql },
-        { name: 'Apache Airflow', icon: SiApacheairflow },
-        { name: 'ETL/ELT', icon: FaCogs },
-        { name: 'BigQuery', icon: SiGooglebigquery },
-        { name: 'MongoDB', icon: SiMongodb }
+        'Apache Spark', 'PySpark', 'Databricks', 'Apache Kafka', 'Delta Lake',
+        'Snowflake', 'PostgreSQL', 'Redis', 'Vector Databases', 'Feature Stores',
+        'Azure Data Lake', 'Amazon S3', 'Data Pipelines', 'ETL',
       ],
       headerIcon: FaDatabase,
-      skillColor: 'bg-blue-500',
     },
     {
-      title: 'Cloud & DevOps',
+      title: 'Backend & API Development',
       skills: [
-        { name: 'AWS', icon: FaAws },
-        { name: 'Azure', icon: FaMicrosoft },
-        { name: 'Docker', icon: FaDocker },
-        { name: 'Kubernetes', icon: SiKubernetes },
-        { name: 'CI/CD', icon: FaGitAlt },
-        { name: 'Git', icon: FaGitAlt }
+        'FastAPI', 'REST APIs', 'gRPC', 'Microservices',
+        'Event-Driven Architecture', 'Enterprise Connectors',
+        'Jira API', 'Slack API', 'WebSockets',
       ],
-      headerIcon: FaAws,
-      skillColor: 'bg-blue-600',
+      headerIcon: FaServer,
     },
     {
-      title: 'Data Science & ML',
+      title: 'Cloud, DevOps & MLOps',
       skills: [
-        { name: 'Pandas', icon: SiPandas },
-        { name: 'NumPy', icon: SiNumpy },
-        { name: 'Scikit-learn', icon: SiScikitlearn },
-        { name: 'TensorFlow', icon: SiTensorflow },
-        { name: 'PyTorch', icon: SiPytorch }
+        'AWS EKS', 'AWS ECS', 'AWS Lambda', 'SageMaker', 'S3', 'API Gateway',
+        'IAM', 'Secrets Manager', 'CloudWatch', 'Microsoft Azure',
+        'Azure ML', 'Azure Data Factory', 'Docker', 'Kubernetes',
+        'GitHub Actions', 'Azure DevOps', 'MLflow', 'CI/CD', 'Terraform',
       ],
-      headerIcon: SiTensorflow,
-      skillColor: 'bg-blue-500',
+      headerIcon: FaCloud,
+    },
+    {
+      title: 'Monitoring & Infrastructure',
+      skills: [
+        'Prometheus', 'Grafana', 'OpenTelemetry', 'ELK Stack',
+        'Distributed Systems', 'Distributed Inference', 'Ray', 'Caching',
+        'Performance Optimization', 'Workload Scheduling', 'Autoscaling',
+        'GPU Scheduling',
+      ],
+      headerIcon: FaChartLine,
+    },
+    {
+      title: 'Databases & Enterprise Platforms',
+      skills: [
+        'PostgreSQL', 'Redis', 'Snowflake', 'Databricks', 'Vector Databases',
+        'Enterprise Knowledge Systems', 'Document Repositories',
+      ],
+      headerIcon: FaDatabase,
     },
   ];
 
@@ -125,38 +110,34 @@ const Skills: React.FC<SkillsProps> = ({ setActiveSection }) => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {skillGroups.map((group, groupIndex) => (
             <motion.div
               key={group.title}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: groupIndex * 0.1 }}
-              whileHover={{ y: -5, scale: 1.05 }}
+              whileHover={{ y: -5 }}
               className="bg-black/20 backdrop-blur-sm rounded-2xl p-6 shadow-lg shadow-blue-500/20 border border-gray-200/30 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-                <group.headerIcon className="w-6 h-6 text-white" />
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <group.headerIcon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-white">{group.title}</h3>
               </div>
-              
-              <h3 className="text-xl font-bold mb-4 text-white">
-                {group.title}
-              </h3>
-              
+
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill, index) => (
                   <motion.span
-                    key={skill.name}
+                    key={skill}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: (groupIndex * 0.1) + (index * 0.05) }}
-                    whileHover={{ scale: 1.1 }}
-                    className="px-3 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2"
+                    transition={{ duration: 0.3, delay: (groupIndex * 0.05) + (index * 0.02) }}
+                    whileHover={{ scale: 1.08 }}
+                    className="px-3 py-1.5 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full text-white text-xs font-semibold shadow-md hover:shadow-lg transition-all duration-200"
                   >
-                    <skill.icon className="w-4 h-4 text-white" />
-                    <span className="text-white text-sm font-semibold">
-                      {skill.name}
-                    </span>
+                    {skill}
                   </motion.span>
                 ))}
               </div>
