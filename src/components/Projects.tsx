@@ -8,11 +8,12 @@ interface ProjectsProps {
 
 const Projects: React.FC<ProjectsProps> = ({ setActiveSection }) => {
   const [ref, inView] = useInView({
-    threshold: 0.3,
-    onChange: (inView) => {
-      if (inView) setActiveSection('projects');
-    },
-  });
+  threshold: 0.01,
+  triggerOnce: true,
+  onChange: (inView) => {
+    if (inView) setActiveSection('projects');
+  },
+});
 
   const projects = [
     {
