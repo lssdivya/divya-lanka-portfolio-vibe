@@ -42,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
   const socialLinks = [
     {
       icon: Github,
-      url: 'https://github.com/lssdivya',
+      url: 'https://github.com/divyaa-l',
       label: 'GitHub',
     },
     {
