@@ -47,7 +47,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
     },
     {
       icon: Linkedin,
-      url: 'https://www.linkedin.com/in/divyaa-l',
+      url: 'https://www.linkedin.com/in/divyaaal/',
       label: 'LinkedIn',
     },
     {
@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
     },
     {
       icon: Mail,
-      url: 'mailto:Lss.divya27@gmail.com',
+      url: 'mailto:Lss.divya23@gmail.com',
       label: 'Email',
     },
   ];
@@ -103,9 +103,9 @@ const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="mb-6"
           >
-            {/* First line: Hey 👋, I'm */}
+            {/* First line: Hey, I'm */}
             <motion.h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4">
-              Hey 👋, I'm
+              Hey, I'm
             </motion.h1>
             
             {/* Second line: Name */}
